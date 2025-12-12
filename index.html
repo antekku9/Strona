@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,75 +8,254 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: #f3f3f3; color: #222; }
 
-    header { height: 90vh; background: url('IMAGE_HERE') center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
-    header .overlay { background: rgba(0,0,0,0.55); position: absolute; top:0; left:0; width:100%; height:100%; }
-    header h1 { position: relative; font-size: 3rem; color: #fff; z-index: 2; text-align: center; }
-    header p { position: relative; margin-top: 10px; font-size: 1.2rem; color: #ddd; z-index: 2; text-align: center; }
+    header {
+      height: 90vh;
+      background: url('IMAGE_HERE') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header .overlay {
+      background: rgba(0,0,0,0.55);
+      position: absolute; top:0; left:0; width:100%; height:100%;
+    }
+    header h1 {
+      position: relative; font-size: 3rem; color: #fff;
+      z-index: 2; text-align: center;
+    }
+    header p {
+      position: relative; margin-top: 10px; font-size: 1.2rem;
+      color: #ddd; z-index: 2; text-align: center;
+    }
 
-    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-align: center;
+    }
 
-    h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+    /* O mnie */
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .about img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .about p { font-size: 1.05rem; }
 
-    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .about img { width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-    .about p { font-size: 1.1rem; }
+    /* Doświadczenie */
+    .experience-item {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .experience-item h3 {
+      margin-bottom: 8px;
+    }
+    .experience-item span {
+      color: #666; font-size: 0.95rem;
+    }
+    .experience-item ul {
+      margin-top: 10px; margin-left: 20px;
+    }
 
-    .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; margin-top: 20px; }
-    .skill { background: #fff; padding: 20px; border-radius: 10px; text-align: center; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    /* Umiejętności */
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 20px;
+    }
+    .skill {
+      background: #fff;
+      padding: 20px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; margin-top: 20px; }
-    .gallery img { width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer; transition: 0.3s; }
+    /* Galeria */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px; margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer; transition: 0.3s;
+    }
     .gallery img:hover { transform: scale(1.03); }
 
-    footer { padding: 40px 20px; background: #222; color: #fff; text-align: center; margin-top: 60px; }
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      background: #222;
+      color: #fff;
+      text-align: center;
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="overlay"></div>
     <div>
       <h1>Antoni Kuran</h1>
-      <p>Fotograf & Grafik — fotografia studyjna, packshot, grafika 2D/3D</p>
+      <p>Grafik & Fotograf — Fotografia produktowa, grafika 2D/3D, e-commerce</p>
     </div>
   </header>
 
+  <!-- O MNIE -->
   <section>
     <h2>O mnie</h2>
     <div class="about">
       <img src="IMAGE_PORTRAIT" alt="Portret">
-      <p>Jestem fotografem i grafikiem z doświadczeniem w fotografii studyjnej, packshotach, realizacji sesji okolicznościowych oraz tworzeniu grafiki wektorowej i rastrowej. Oferuję także profesjonalne rendery 3D. Posiadam licencję UAVO / NSTS-01, która umożliwia wykonywanie komercyjnych ujęć z drona.</p>
+      <p>
+        Od 8 lat rozwijam swoje umiejętności w fotografii oraz grafice,
+        a od ponad 4 lat oferuję profesjonalne usługi dla firm i klientów indywidualnych.
+        Tworzę fotografie produktowe, packshoty, materiały marketingowe, projekty graficzne
+        oraz rendery 3D. Posiadam doświadczenie w obsłudze sklepów internetowych
+        (IdoSell, Shoper), tworzeniu kampanii reklamowych oraz materiałów do druku i online.
+      </p>
     </div>
   </section>
 
+  <!-- DOŚWIADCZENIE -->
+  <section>
+    <h2>Doświadczenie</h2>
+
+    <div class="experience-item">
+      <h3>Grafik & Fotograf — działalność nierejestrowana</h3>
+      <span>2020 – obecnie</span>
+      <ul>
+        <li>Fotografia produktowa i packshot</li>
+        <li>Projektowanie banerów reklamowych i sprzedażowych</li>
+        <li>Obsługa sklepów internetowych: IdoSell, Shoper</li>
+        <li>Tworzenie materiałów wizualnych zgodnych z identyfikacją marek</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Vasco Nails sp. z o.o. — Grafik / Fotograf</h3>
+      <span>2023 – 2024</span>
+      <ul>
+        <li>Tworzenie banerów reklamowych (sklep, allegro, marki zależne)</li>
+        <li>Fotografia produktowa — packshot, kompozycje sceniczne</li>
+        <li>Przygotowanie etykiet, pudełek, naklejek oraz opakowań produktów</li>
+        <li>Tworzenie materiałów do e-commerce oraz marketingu</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Euro-Ekol sp. z o.o. sp.k. — Grafik komputerowy</h3>
+      <span>2024</span>
+      <ul>
+        <li>Tworzenie projektów graficznych dla marek IRCHOMAT i Euro Myjnie</li>
+        <li>Obsługa kampanii reklamowych META & Google Ads</li>
+        <li>Przygotowanie materiałów do druku: banery, folie, siatki mesh</li>
+        <li>Tworzenie wizualizacji 3D w 3ds Max i Blender</li>
+        <li>Obsługa ploterów Mimaki, Summa, Roland</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <h3>Conner sp. z o.o. — Serwisant IT</h3>
+      <span>2024</span>
+      <ul>
+        <li>Diagnoza i naprawa komputerów oraz urządzeń peryferyjnych</li>
+        <li>Obsługa infrastruktury IT — sieć, NAS, stanowiska robocze</li>
+        <li>Wsparcie użytkowników i dokumentacja serwisowa</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- UMIEJĘTNOŚCI -->
   <section>
     <h2>Umiejętności</h2>
     <div class="skills-list">
-      <div class="skill">Fotografia studyjna</div>
+      <div class="skill">Adobe Photoshop</div>
+      <div class="skill">Adobe Illustrator</div>
+      <div class="skill">Adobe InDesign</div>
+      <div class="skill">Adobe Premiere Pro</div>
+      <div class="skill">Fotografia produktowa</div>
       <div class="skill">Packshoty</div>
-      <div class="skill">Fotografia eventowa</div>
-      <div class="skill">Grafika wektorowa</div>
-      <div class="skill">Grafika rastrowa</div>
-      <div class="skill">Rendery 3D</div>
-      <div class="skill">Licencja UAVO / NSTS-01</div>
+      <div class="skill">Grafika 2D</div>
+      <div class="skill">Grafika 3D — Blender / 3ds Max</div>
+      <div class="skill">Figma — UI/UX</div>
+      <div class="skill">E-commerce: IdoSell, Shoper</div>
+      <div class="skill">Comarch Optima</div>
+      <div class="skill">Kampanie META / Google Ads</div>
+      <div class="skill">Ploter: Mimaki, Summa, Roland</div>
     </div>
   </section>
 
+  <!-- EDUKACJA -->
+  <section>
+    <h2>Edukacja</h2>
+    <div class="experience-item">
+      <h3>Akademia Humanistyczno-Ekonomiczna</h3>
+      <span>Grafika komputerowa — 2024–2027</span>
+    </div>
+
+    <div class="experience-item">
+      <h3>Zespół Szkół Przemysłu Mody</h3>
+      <span>Technik fotografii i multimediów — 2019–2023</span>
+    </div>
+  </section>
+
+  <!-- JĘZYKI -->
+  <section>
+    <h2>Języki</h2>
+    <div class="skills-list">
+      <div class="skill">Polski — ojczysty</div>
+      <div class="skill">Angielski — B1/B2</div>
+    </div>
+  </section>
+
+  <!-- ZAINTERESOWANIA -->
+  <section>
+    <h2>Zainteresowania</h2>
+    <div class="skills-list">
+      <div class="skill">Fotografia</div>
+      <div class="skill">Elektronika & Informatyka</div>
+      <div class="skill">Motoryzacja</div>
+      <div class="skill">Lotnictwo</div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
   <section>
     <h2>Galeria</h2>
     <div class="gallery">
-      <img src="PHOTO1" alt="Przykładowe zdjęcie">
-      <img src="PHOTO2" alt="Przykładowe zdjęcie">
-      <img src="PHOTO3" alt="Przykładowe zdjęcie">
-      <img src="PHOTO4" alt="Przykładowe zdjęcie">
+      <img src="PHOTO1" alt="Zdjęcie portfolio 1">
+      <img src="PHOTO2" alt="Zdjęcie portfolio 2">
+      <img src="PHOTO3" alt="Zdjęcie portfolio 3">
+      <img src="PHOTO4" alt="Zdjęcie portfolio 4">
     </div>
   </section>
 
   <footer>
     © 2025 Antoni Kuran — fotografia & grafika
   </footer>
+
 </body>
 </html>
