@@ -1,0 +1,153 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+nav {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  text-decoration: none;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #999;
+}
+
+/* HEADER */
+header {
+  height: 70vh;
+  background: url('img/header.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  color: white;
+  font-size: 3rem;
+  text-shadow: 0px 0px 10px #000;
+}
+
+/* SECTIONS */
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ABOUT */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.about-container img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* EXPERIENCE */
+.experience-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.experience-box h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.experience-box span {
+  color: #777;
+}
+
+/* PORTFOLIO GRID */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+}
+
+.portfolio-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-item img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.portfolio-item h3 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* CONTACT */
+.contact-box {
+  background: #fff;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1.2rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #222;
+  color: white;
+  margin-top: 60px;
+}
