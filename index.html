@@ -62,16 +62,18 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            /* KLUCZOWA ZMIANA: Tło Hero na białe */
             background-color: #fff; 
         }
 
+        /* --- SUBTELNE NAPISY NA KARUZELI --- */
         .hero-content {
             position: relative;
             z-index: 10;
             text-align: center;
-            color: var(--primary-color); /* Zmiana koloru tekstu na ciemny dla jasnego tła */
-            text-shadow: none; /* Usunięcie cienia, bo jest niepotrzebny */
+            /* KLUCZOWA ZMIANA: TEKST BIAŁY */
+            color: white; 
+            /* KLUCZOWA ZMIANA: MOCNY CIEŃ DLA CZYTELNOŚCI NA BIAŁYCH PASACH */
+            text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
             padding: 20px;
         }
 
@@ -88,6 +90,7 @@
             text-transform: uppercase;
             margin-top: 15px;
         }
+        /* ---------------------------------- */
 
         .carousel-track-container {
             position: absolute;
@@ -113,9 +116,7 @@
         .slide img {
             width: 100%;
             height: 100%;
-            /* KLUCZOWA ZMIANA: Utrzymanie całego zdjęcia w kadrze, z pasami */
             object-fit: contain; 
-            /* Usunięto filtr brightness, bo zdjęcia są jasne */
             filter: none;
         }
 
@@ -196,7 +197,7 @@
 <header class="hero">
     <div class="hero-content">
         <h1>Antoni Kuran</h1>
-        <p>Grafik & Fotograf</p>
+        <p>Grafik Komputerowy & Fotograf</p>
     </div>
 
     <div class="carousel-track-container">
