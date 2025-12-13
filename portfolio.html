@@ -13,7 +13,7 @@
             --accent-color: #c5a059; /* Złoty akcent */
             --bg-light: #fdfdfd;
             --text-muted: #666;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Dynamiczniejsze przejście */
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
         }
 
         * {
@@ -60,6 +60,8 @@
         /* --- SEKCJA GŁÓWNA --- */
         .portfolio-section {
             padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .portfolio-section h2 {
@@ -76,67 +78,50 @@
             margin-bottom: 60px;
         }
 
-        /* --- SIATKA PORTFOLIO --- */
+        /* --- SIATKA KAFELKÓW (3 KOLUMNY) --- */
         .portfolio-grid {
             display: grid;
+            /* Siatka 3 kolumn (jak na obrazku), elastyczna dla mniejszych ekranów */
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 40px;
-            max-width: 1300px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            background: #fff;
-            /* Domyślny, niewidoczny border dla zachowania spójności */
-            border: 3px solid transparent; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: white;
+            padding: 30px;
+            border: 1px solid #eee;
+            /* KLUCZOWE: Prosty styl kafelka */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
             transition: var(--transition);
             cursor: pointer;
+            text-align: left;
+            min-height: 150px; /* Minimalna wysokość kafelka */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* KLUCZOWY EFEKT HOVER */
+        /* EFEKT HOVER ZGODNY Z WIZJĄ */
         .portfolio-item:hover {
-            transform: scale(1.03); /* Powiększenie kafelka */
-            border: 3px solid var(--accent-color); /* Złota obwódka */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: scale(1.05); /* Powiększenie */
+            border: 1px solid var(--accent-color); /* Złota obwódka (1px dla subtelności) */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 5; 
         }
 
-        .portfolio-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover img {
-            /* Subtelne przyciemnienie i lekkie powiększenie zdjęcia w kafelku */
-            filter: brightness(0.95); 
-            transform: scale(1.01);
-        }
-
-        /* OPISY PROJEKTÓW */
         .portfolio-item h3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.95); /* Prawie białe tło dla tytułu */
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: var(--primary-color);
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
-            transform: translateY(100%);
-            transition: transform 0.4s ease-out;
-            z-index: 10; /* Zapewnienie, że tytuł jest na wierzchu */
         }
 
-        .portfolio-item:hover h3 {
-            transform: translateY(0);
+        .portfolio-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: left;
+            margin: 0;
+            line-height: 1.4;
         }
 
         /* --- FOOTER --- */
@@ -147,6 +132,13 @@
             color: #999;
             border-top: 1px solid #eee;
             margin-top: 80px;
+        }
+        
+        /* Dostosowanie do mniejszych ekranów */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* 1 kolumna na mobilnych urządzeniach */
+            }
         }
     </style>
 </head>
@@ -160,38 +152,38 @@
 
 <section class="portfolio-section">
     <h2>Portfolio</h2>
-    <p>Moje wybrane realizacje – fotografia, grafika i projekty 3D</p>
+    <p>Moje wybrane kategorie projektów i usług</p>
 
     <div class="portfolio-grid">
 
         <div class="portfolio-item">
-            <img src="img/project1.jpg" alt="Packshot kosmetyczny">
-            <h3>Packshot kosmetyczny</h3>
+            <h3>Fotografia</h3>
+            <p>Profesjonalne packshoty, zdjęcia reklamowe i sesje aranżowane.</p>
         </div>
 
         <div class="portfolio-item">
-            <img src="img/project2.jpg" alt="Projekt baneru reklamowego">
-            <h3>Projekt baneru reklamowego</h3>
+            <h3>Grafika 2D & Branding</h3>
+            <p>Projektowanie logo, identyfikacja wizualna, banery i materiały do druku (DTP).</p>
         </div>
 
         <div class="portfolio-item">
-            <img src="img/project3.jpg" alt="Render 3D produktu">
-            <h3>Render 3D produktu</h3>
+            <h3>Modele & Wizualizacje 3D</h3>
+            <p>Kompleksowe tworzenie fotorealistycznych renderów produktów i wizualizacji.</p>
         </div>
         
         <div class="portfolio-item">
-            <img src="img/project4.jpg" alt="Identyfikacja wizualna firmy">
-            <h3>Identyfikacja wizualna firmy</h3>
+            <h3>E-commerce Solutions</h3>
+            <p>Kompleksowa obsługa graficzna sklepów internetowych i platform sprzedażowych.</p>
         </div>
 
         <div class="portfolio-item">
-            <img src="img/project5.jpg" alt="Grafika social media">
-            <h3>Grafika social media</h3>
+            <h3>Animacje</h3>
+            <p>Krótkie animacje produktowe, montaż wideo i materiały na social media.</p>
         </div>
         
         <div class="portfolio-item">
-            <img src="img/project6.jpg" alt="Katalog produktowy DTP">
-            <h3>Katalog produktowy DTP</h3>
+            <h3>Konsultacje Kreatywne</h3>
+            <p>Strategie wizualne, pomoc w planowaniu kampanii reklamowych i wizerunku.</p>
         </div>
 
     </div>
