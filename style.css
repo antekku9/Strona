@@ -144,10 +144,27 @@ h2 {
 }
 
 /* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  background: #222;
-  color: white;
-  margin-top: 60px;
+.footer-year {
+    display: block; /* Ustawienie roku na osobnym wierszu */
+    margin-bottom: 5px;
+}
+
+.footer-brand {
+    display: inline-flex; /* Umożliwia centrowanie w pionie */
+    flex-direction: column;
+    align-items: center; /* Wyśrodkowanie tekstu "STUDIO" pod "FRAMEWORK" */
+    line-height: 1;
+}
+
+.footer-brand .footer-main {
+    font-weight: 700;
+    font-size: 0.9rem; /* Normalna czcionka */
+    color: var(--primary-color); /* Ciemniejszy kolor dla lepszej widoczności */
+}
+
+.footer-brand .footer-sub {
+    font-weight: 500;
+    font-size: 0.65rem; /* Mniejsze "Studio" */
+    letter-spacing: 3px; /* Rozstrzelenie liter */
+    color: var(--text-muted); /* Subtelniejszy kolor */
 }
