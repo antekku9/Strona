@@ -1,0 +1,4 @@
+# Konfiguracja GitHub Pages
+# Dodaje ścieżki, które normalnie byłyby ignorowane (zaczynające się od kropki)
+include:
+  - .well-known
