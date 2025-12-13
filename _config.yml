@@ -2,3 +2,4 @@
 # Dodaje ścieżki, które normalnie byłyby ignorowane (zaczynające się od kropki)
 include:
   - .well-known
+  - .txt  # Dodajemy, aby uwzględnić pliki .txt w ukrytych folderach
