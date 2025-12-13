@@ -10,12 +10,17 @@
         /* --- STYLE ZGODNE Z INDEX.HTML --- */
         :root {
             --primary-color: #222;
-            --accent-color: #c5a059; /* Złoty akcent */
+            --accent-color: #c5a059;
             --bg-light: #fdfdfd;
             --text-muted: #666;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
+        /* --- WŁAŚCIWOŚĆ KLUCZOWA DLA PRZEWIJANIA --- */
+        html {
+            scroll-behavior: smooth; /* Płynne przewijanie do sekcji */
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAWIGACJA --- */
+        /* --- NAWIGACJA (Stale na górze) --- */
         nav {
             background: #fff;
             padding: 20px 5%;
@@ -57,7 +62,7 @@
             color: var(--accent-color);
         }
 
-        /* --- SEKCJA GŁÓWNA --- */
+        /* --- SEKCJA GŁÓWNA (Kafelki) --- */
         .portfolio-section {
             padding: 80px 5%;
             max-width: 1200px;
@@ -71,7 +76,7 @@
             margin-bottom: 5px;
         }
 
-        .portfolio-section p {
+        .portfolio-section > p { /* Tylko bezpośredni paragraf, nie w kafelkach */
             font-size: 1.1rem;
             color: var(--text-muted);
             text-align: center;
@@ -81,30 +86,27 @@
         /* --- SIATKA KAFELKÓW (3 KOLUMNY) --- */
         .portfolio-grid {
             display: grid;
-            /* Siatka 3 kolumn (jak na obrazku), elastyczna dla mniejszych ekranów */
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 20px;
+            margin-bottom: 100px; /* Dodatkowy margines przed sekcjami prac */
         }
 
         .portfolio-item {
+            display: block; /* Ważne, aby link A działał jako kafelek */
             background: white;
             padding: 30px;
             border: 1px solid #eee;
-            /* KLUCZOWE: Prosty styl kafelka */
             box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
             transition: var(--transition);
             cursor: pointer;
             text-align: left;
-            min-height: 150px; /* Minimalna wysokość kafelka */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            min-height: 150px;
+            text-decoration: none; /* Usunięcie podkreślenia z linku */
         }
 
-        /* EFEKT HOVER ZGODNY Z WIZJĄ */
         .portfolio-item:hover {
-            transform: scale(1.05); /* Powiększenie */
-            border: 1px solid var(--accent-color); /* Złota obwódka (1px dla subtelności) */
+            transform: scale(1.05);
+            border: 1px solid var(--accent-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             z-index: 5; 
         }
@@ -119,10 +121,56 @@
         .portfolio-item p {
             font-size: 0.9rem;
             color: var(--text-muted);
-            text-align: left;
             margin: 0;
             line-height: 1.4;
         }
+        
+        /* --- SEKCJE PRAC (STREFY) --- */
+        .work-zone {
+            padding: 50px 0;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .work-zone:last-of-type {
+             border-bottom: none;
+             margin-bottom: 0;
+        }
+        
+        .work-zone h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 90px; /* Przyklejenie tytułu pod nawigacją */
+            background: var(--bg-light);
+            z-index: 10;
+        }
+
+        /* --- SIATKA ZDJĘĆ W STREFACH (3/4 SZEROKOŚCI) --- */
+        .work-grid {
+            display: grid;
+            /* KOLUMNY: 3/4 zdjęcia (fr) + 1/4 marginesu (auto) */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .work-grid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Style dla 3/4 szerokości (np. centrujący kontener dla nieparzystych sekcji) */
+        .section-center-margin {
+            max-width: 900px; /* Przykład 3/4 szerokości dla dużego ekranu */
+            margin: 0 auto;
+        }
+
 
         /* --- FOOTER --- */
         footer {
@@ -137,7 +185,7 @@
         /* Dostosowanie do mniejszych ekranów */
         @media (max-width: 768px) {
             .portfolio-grid {
-                grid-template-columns: 1fr; /* 1 kolumna na mobilnych urządzeniach */
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -155,39 +203,90 @@
     <p>Moje wybrane kategorie projektów i usług</p>
 
     <div class="portfolio-grid">
-
-        <div class="portfolio-item">
+        <a href="#fotografia-prace" class="portfolio-item">
             <h3>Fotografia</h3>
             <p>Profesjonalne packshoty, zdjęcia reklamowe i sesje aranżowane.</p>
-        </div>
+        </a>
 
-        <div class="portfolio-item">
+        <a href="#grafika2d-prace" class="portfolio-item">
             <h3>Grafika 2D & Branding</h3>
             <p>Projektowanie logo, identyfikacja wizualna, banery i materiały do druku (DTP).</p>
-        </div>
+        </a>
 
-        <div class="portfolio-item">
+        <a href="#modele3d-prace" class="portfolio-item">
             <h3>Modele & Wizualizacje 3D</h3>
             <p>Kompleksowe tworzenie fotorealistycznych renderów produktów i wizualizacji.</p>
-        </div>
+        </a>
         
-        <div class="portfolio-item">
+        <a href="#ecommerce-prace" class="portfolio-item">
             <h3>E-commerce Solutions</h3>
             <p>Kompleksowa obsługa graficzna sklepów internetowych i platform sprzedażowych.</p>
-        </div>
+        </a>
 
-        <div class="portfolio-item">
+        <a href="#animacje-prace" class="portfolio-item">
             <h3>Animacje</h3>
             <p>Krótkie animacje produktowe, montaż wideo i materiały na social media.</p>
-        </div>
+        </a>
         
-        <div class="portfolio-item">
+        <a href="#konsultacje-prace" class="portfolio-item">
             <h3>Konsultacje Kreatywne</h3>
             <p>Strategie wizualne, pomoc w planowaniu kampanii reklamowych i wizerunku.</p>
-        </div>
+        </a>
 
     </div>
 </section>
+
+<section id="fotografia-prace" class="work-zone section-center-margin">
+    <h3>Fotografia</h3>
+    <div class="work-grid">
+        <img src="img/fotografia_1.jpg" alt="Przykład pracy: packshot 1">
+        <img src="img/fotografia_2.jpg" alt="Przykład pracy: packshot 2">
+        <img src="img/fotografia_3.jpg" alt="Przykład pracy: packshot 3">
+        <img src="img/fotografia_4.jpg" alt="Przykład pracy: packshot 4">
+    </div>
+</section>
+
+<section id="grafika2d-prace" class="work-zone section-center-margin">
+    <h3>Grafika 2D & Branding</h3>
+    <div class="work-grid">
+        <img src="img/grafika_1.jpg" alt="Przykład pracy: Logo">
+        <img src="img/grafika_2.jpg" alt="Przykład pracy: Baner">
+        <img src="img/grafika_3.jpg" alt="Przykład pracy: DTP">
+    </div>
+</section>
+
+<section id="modele3d-prace" class="work-zone section-center-margin">
+    <h3>Modele & Wizualizacje 3D</h3>
+    <div class="work-grid">
+        <img src="img/model3d_1.jpg" alt="Przykład pracy: Render produktu 1">
+        <img src="img/model3d_2.jpg" alt="Przykład pracy: Render produktu 2">
+    </div>
+</section>
+
+<section id="ecommerce-prace" class="work-zone section-center-margin">
+    <h3>E-commerce Solutions</h3>
+    <div class="work-grid">
+        <img src="img/ecommerce_1.jpg" alt="Przykład pracy: Miniatura aukcji">
+        <img src="img/ecommerce_2.jpg" alt="Przykład pracy: Grafika na sklep">
+    </div>
+</section>
+
+<section id="animacje-prace" class="work-zone section-center-margin">
+    <h3>Animacje</h3>
+    <div class="work-grid">
+        <img src="img/animacja_1.jpg" alt="Przykład pracy: Klatka z animacji 1">
+        <img src="img/animacja_2.jpg" alt="Przykład pracy: Klatka z animacji 2">
+    </div>
+</section>
+
+<section id="konsultacje-prace" class="work-zone section-center-margin">
+    <h3>Konsultacje Kreatywne</h3>
+    <div class="work-grid">
+        <img src="img/konsultacje_1.jpg" alt="Przykład pracy: Moodboard 1">
+        <img src="img="img/konsultacje_2.jpg" alt="Przykład pracy: Moodboard 2">
+    </div>
+</section>
+
 
 <footer>© 2025 Antoni Kuran</footer>
 
