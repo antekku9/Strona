@@ -1,41 +1,196 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio – Antoni Kuran</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – Antoni Kuran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLE ZGODNE Z INDEX.HTML --- */
+        :root {
+            --primary-color: #222;
+            --accent-color: #c5a059; /* Złoty akcent */
+            --bg-light: #fdfdfd;
+            --text-muted: #666;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* --- NAWIGACJA --- */
+        nav {
+            background: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- SEKCJA GŁÓWNA --- */
+        .portfolio-section {
+            padding: 80px 5%;
+        }
+
+        .portfolio-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-section p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* --- SIATKA PORTFOLIO (KLUCZOWY ELEMENT) --- */
+        .portfolio-grid {
+            display: grid;
+            /* Siatka 3 kolumn, elastycznie dostosowujących się do szerokości */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            filter: brightness(0.9);
+            transform: scale(1.03);
+        }
+
+        /* OPISY PROJEKTÓW */
+        .portfolio-item h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            border-top: 2px solid var(--accent-color);
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+        }
+
+        .portfolio-item:hover h3 {
+            transform: translateY(0);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">Strona główna</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="doswiadczenie.html">Doświadczenie</a>
-  <a href="kontakt.html">Kontakt</a>
+    <a href="index.html">Strona główna</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="kontakt.html">Kontakt</a>
 </nav>
 
-<section>
-  <h2>Portfolio</h2>
-  <p style="text-align:center; margin-bottom:40px;">Moje wybrane realizacje – fotografia, grafika i projekty 3D</p>
+<section class="portfolio-section">
+    <h2>Portfolio</h2>
+    <p>Moje wybrane realizacje – fotografia, grafika i projekty 3D</p>
 
-  <div class="portfolio-grid">
+    <div class="portfolio-grid">
 
-    <div class="portfolio-item">
-      <img src="img/project1.jpg" alt="">
-      <h3>Packshot kosmetyczny</h3>
+        <div class="portfolio-item">
+            <img src="img/project1.jpg" alt="Packshot kosmetyczny">
+            <h3>Packshot kosmetyczny</h3>
+        </div>
+
+        <div class="portfolio-item">
+            <img src="img/project2.jpg" alt="Projekt baneru reklamowego">
+            <h3>Projekt baneru reklamowego</h3>
+        </div>
+
+        <div class="portfolio-item">
+            <img src="img/project3.jpg" alt="Render 3D produktu">
+            <h3>Render 3D produktu</h3>
+        </div>
+        
+        <div class="portfolio-item">
+            <img src="img/project4.jpg" alt="Identyfikacja wizualna firmy">
+            <h3>Identyfikacja wizualna firmy</h3>
+        </div>
+
+        <div class="portfolio-item">
+            <img src="img/project5.jpg" alt="Grafika social media">
+            <h3>Grafika social media</h3>
+        </div>
+        
+        <div class="portfolio-item">
+            <img src="img/project6.jpg" alt="Katalog produktowy DTP">
+            <h3>Katalog produktowy DTP</h3>
+        </div>
+
     </div>
-
-    <div class="portfolio-item">
-      <img src="img/project2.jpg" alt="">
-      <h3>Projekt baneru reklamowego</h3>
-    </div>
-
-    <div class="portfolio-item">
-      <img src="img/project3.jpg" alt="">
-      <h3>Render 3D produktu</h3>
-    </div>
-
-  </div>
 </section>
 
 <footer>© 2025 Antoni Kuran</footer>
