@@ -1,44 +1,307 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio – Antoni Kuran</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antoni Kuran – Grafik & Fotograf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #222;
+            --accent-color: #c5a059; 
+            --bg-light: #fdfdfd;
+            --text-muted: #666;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Dynamiczniejsze przejście */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- SEKCJA HERO (Karuzela) --- */
+        header.hero {
+            height: 75vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; 
+            overflow: hidden;
+            background-color: #fff; 
+            padding-bottom: 50px; 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white; 
+            text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .carousel-track-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            filter: brightness(0.7); 
+        }
+
+        .about {
+            padding: 100px 10%;
+            background: white;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-container img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 5px;
+            box-shadow: 20px 20px 0px var(--accent-color);
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* --- SEKCJA USŁUGI/PORTFOLIO (4 Kafelki) --- */
+        .services {
+            padding: 80px 10%;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        
+        /* Styl nagłówka */
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 równe kolumny */
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 25px;
+            /* Zapewnienie, że jest kwadratowe lub proporcjonalne */
+            aspect-ratio: 1 / 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #eee;
+            /* ZMIANA: Usunięcie translateY, bo będzie powiększanie */
+            transition: var(--transition); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* KLUCZOWY EFEKT HOVER */
+        .service-card:hover {
+            transform: scale(1.05); /* Powiększenie */
+            border: 3px solid var(--accent-color); /* Złota obwódka */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            z-index: 5; /* Aby kafelki powiększały się nad sąsiadami */
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 900px) {
+            .about-container { grid-template-columns: 1fr; text-align: center; }
+            .about-container img { margin: 0 auto 40px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { letter-spacing: 4px; }
+            
+            /* Responsywność dla 4 kolumn - na tabletach 2 kolumny */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">Strona główna</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="doswiadczenie.html">Doświadczenie</a>
-  <a href="kontakt.html">Kontakt</a>
+  <a href="index.html">Strona główna</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
 
-<section>
-  <h2>Portfolio</h2>
-  <p style="text-align:center; margin-bottom:40px;">Moje wybrane realizacje – fotografia, grafika i projekty 3D</p>
+<header class="hero">
+    <div class="hero-content">
+        <h1>Antoni Kuran</h1>
+        <p>Grafik Komputerowy & Fotograf</p>
+    </div>
 
-  <div class="portfolio-grid">
+    <div class="carousel-track-container">
+        <div class="carousel-track">
+            <div class="slide"><img src="img/slajd1.jpg" alt="Projekt 1"></div>
+            <div class="slide"><img src="img/slajd2.jpg" alt="Projekt 2"></div>
+            <div class="slide"><img src="img/slajd3.jpg" alt="Projekt 3"></div>
+        </div>
+    </div>
+</header>
 
-    <div class="portfolio-item">
-      <img src="img/project1.jpg" alt="">
-      <h3>Packshot kosmetyczny</h3>
-    </div>
+<section class="about">
+  <div class="about-container">
+    <div class="about-image">
+        <img src="img/portrait.jpg" alt="Antoni Kuran">
+    </div>
+    <div class="about-text">
+        <h2>O mnie</h2>
+        <p>
+            Od 8 lat rozwijam swoje umiejętności w fotografii oraz grafice.
+            Oferuję profesjonalną fotografię produktową, packshoty, projekty graficzne,
+            banery reklamowe, rendery 3D oraz obsługę wizualną sklepów internetowych.
+        </p>
+        <br>
+        <p>
+            Pracuję w programach Adobe Photoshop, Illustrator, InDesign, Premiere oraz Blender. 
+            Dostarczam kompleksowe rozwiązania wizualne, które wspierają wizerunek i sprzedaż.
+        </p>
+    </div>
+  </div>
+</section>
 
-    <div class="portfolio-item">
-      <img src="img/project2.jpg" alt="">
-      <h3>Projekt baneru reklamowego</h3>
-    </div>
-
-    <div class="portfolio-item">
-      <img src="img/project3.jpg" alt="">
-      <h3>Render 3D produktu</h3>
-    </div>
-
-  </div>
+<section class="services">
+    <h2>Portfolio</h2> <div class="services-grid">
+        <div class="service-card">
+            <h3>Fotografia</h3>
+            <p>Produktowa, reklamowa i packshoty do sklepów online.</p>
+        </div>
+        <div class="service-card">
+            <h3>Grafika 2D</h3>
+            <p>Logo, branding, banery oraz materiały do druku.</p>
+        </div>
+        <div class="service-card">
+            <h3>Modele 3D</h3>
+            <p>Fotorealistyczne rendery produktów i wizualizacje.</p>
+        </div>
+        <div class="service-card">
+            <h3>E-commerce</h3>
+            <p>Kompleksowa obsługa wizualna sklepów internetowych.</p>
+        </div>
+    </div>
 </section>
 
 <footer>© 2025 Antoni Kuran</footer>
+
+<script>
+    let currentIndex = 0;
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        }
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(nextSlide, 4000);
+</script>
 
 </body>
 </html>
