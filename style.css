@@ -1,7 +1,7 @@
 /* --- ZMIENNE KOLORÓW I FONTU --- */
 :root {
     --primary-color: #222;
-    --accent-color: #c5a059;
+    --accent-color: #c5a059; /* Złoty akcent */
     --bg-light: #fdfdfd;
     --text-muted: #666;
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -280,14 +280,23 @@ h2 {
     margin: 0 auto;
 }
 
-/* --- CONTACT --- */
+
+/* --- SEKCJA KONTAKT (OD TERAZ TUTAJ SĄ STYLE KONTAKTOWE!) --- */
 .contact-section {
     padding: 80px 5%;
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.5fr; /* Dane | Formularz */
     gap: 60px;
+}
+
+.contact-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    grid-column: 1 / -1; 
+    text-align: center;
 }
 
 .contact-info h3 {
@@ -306,6 +315,12 @@ h2 {
     margin-top: 10px;
 }
 
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
 .contact-info a {
     color: var(--primary-color);
     text-decoration: none;
@@ -321,30 +336,88 @@ h2 {
     margin-top: 30px;
 }
 
-.contact-form {
-    background: #fff; 
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+.social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
-/* --- FOOTER (OSTATECZNIE NAPRAWIONY LOGOTYP) --- */
+.contact-form {
+    background: #f9f9f9; /* Tło z oryginalnego kontaktu */
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.contact-form button:hover {
+    background: #a8874f; 
+}
+
+
+/* --- FOOTER (OSTATECZNIE NAPRAWIONY LOGOTYP I CENTROWANIE) --- */
 footer {
-    /* Właściwości ogólne */
     padding: 40px;
     font-size: 0.8rem;
     color: #999;
     border-top: 1px solid #eee;
     margin-top: 80px;
 
-    /* Resetowanie potencjalnych konfliktów */
+    /* Resetowanie konfliktów */
     width: 100%; 
     max-width: none;
     
     /* Właściwy Flexbox do centrowania */
     display: flex; 
     flex-direction: column;
-    align-items: center; /* CENTROWANIE */
+    align-items: center; 
     text-align: center;
 }
 
@@ -366,7 +439,6 @@ footer {
     letter-spacing: 3px; 
     color: var(--text-muted); 
 }
-
 
 /* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
 @media (max-width: 900px) {
@@ -394,7 +466,7 @@ footer {
         box-shadow: 10px 10px 0px var(--accent-color); 
     }
     
-    /* SEKCJA KONTAKT */
+    /* SEKCJA KONTAKT (RESPONSYWNOŚĆ) */
     .contact-section { 
         grid-template-columns: 1fr; 
         gap: 40px; 
@@ -414,4 +486,3 @@ footer {
         font-size: 1.5rem;
     }
 }
-
