@@ -16,7 +16,6 @@
 }
 
 body {
-    /* Zmieniono na Montserrat, który jest spójny ze stylem portfolio */
     font-family: 'Montserrat', sans-serif; 
     background: var(--bg-light);
     color: var(--primary-color);
@@ -26,7 +25,7 @@ body {
 /* --- NAVBAR --- */
 nav {
     width: 100%;
-    padding: 20px 5%; /* Zmieniono na % dla lepszej responsywności */
+    padding: 20px 5%; 
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -40,7 +39,7 @@ nav {
 nav a {
     text-decoration: none;
     color: var(--primary-color);
-    font-size: 0.85rem; /* Zmniejszono font i dodano uppercase */
+    font-size: 0.85rem; 
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -53,11 +52,11 @@ nav a:hover {
 
 /* --- HEADER / HERO SECTION (Karuzela) --- */
 header.hero {
-    height: 75vh; /* Ujednolicona wysokość */
+    height: 75vh; 
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Tekst na dole */
+    align-items: flex-end; 
     overflow: hidden;
     background-color: #fff; 
     padding-bottom: 50px; 
@@ -132,7 +131,7 @@ section {
 }
 
 h2 {
-    font-size: 2.5rem; /* Zmieniono dla spójności */
+    font-size: 2.5rem; 
     margin-bottom: 40px;
     text-align: center;
     font-weight: 700;
@@ -141,8 +140,8 @@ h2 {
 /* --- ABOUT --- */
 .about-container {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Ddjusted ratio */
-    gap: 60px; /* Zwiększono odstęp */
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 60px; 
     align-items: center;
 }
 
@@ -150,7 +149,6 @@ h2 {
     width: 100%;
     max-width: 450px;
     border-radius: 5px;
-    /* Złoty akcent zamiast box-shadow */
     box-shadow: 20px 20px 0px var(--accent-color); 
 }
 
@@ -327,10 +325,10 @@ h2 {
 }
 
 .contact-form {
-    background: #fff; /* Ujednolicone tło */
+    background: #fff; 
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Zachowanie cienia, jak w Twoim pliku */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
 }
 
 /* --- FOOTER (Ujednolicone style) --- */
@@ -368,11 +366,50 @@ footer {
     color: var(--text-muted); 
 }
 
-/* --- MEDIA QUERIES --- */
+/* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
 @media (max-width: 900px) {
-    .about-container { grid-template-columns: 1fr; text-align: center; }
-    .about-container img { margin: 0 auto 40px; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content p { letter-spacing: 4px; }
-    .contact-section { grid-template-columns: 1fr; } /* Responsywność dla kontaktu */
+    /* RESPONSYWNOŚĆ GŁÓWNA */
+    section {
+        padding: 50px 3%; /* Mniejszy padding na małych ekranach */
+    }
+    
+    /* ZMNIEJSZENIE LOGOTYPU HERO */
+    #framework-main { 
+        font-size: 2.5rem; 
+        letter-spacing: 3px;
+    }
+    #studio-sub { 
+        font-size: 1.2rem; 
+        letter-spacing: 5px; 
+    }
+    
+    /* SEKCJA O MNIE */
+    .about-container { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    .about-container img { 
+        margin: 0 auto 40px; 
+        box-shadow: 10px 10px 0px var(--accent-color); /* Mniejszy cień na mobilnym */
+    }
+    
+    /* SEKCJA KONTAKT */
+    .contact-section { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    
+    /* SIATKI NA PORTFOLIO/USŁUGI (Zapewnienie większego paska dla kafelków) */
+    .portfolio-grid,
+    .services-grid {
+        grid-template-columns: 1fr; /* Zawsze jedna kolumna na mobilnym */
+    }
+    
+    /* ZMNIEJSZENIE CZCIONEK OGÓLNYCH */
+    h2 {
+        font-size: 2rem;
+    }
+    .work-zone h3 {
+        font-size: 1.5rem;
+    }
 }
