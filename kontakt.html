@@ -1,29 +1,287 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Kontakt – Antoni Kuran</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Framework Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLE GLOBALNE --- */
+        :root {
+            --primary-color: #222;
+            --accent-color: #c5a059; /* Złoty akcent */
+            --bg-light: #fdfdfd;
+            --text-muted: #666;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* --- NAWIGACJA (Spójna z index.html) --- */
+        nav {
+            background: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- SEKCJA KONTAKT --- */
+        .contact-section {
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Dane | Formularz */
+            gap: 60px;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            grid-column: 1 / -1; /* Nagłówek rozciąga się na obie kolumny */
+            text-align: center;
+        }
+
+        /* --- DANE KONTAKTOWE (LEWA KOLUMNA) --- */
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin-top: 10px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* --- FORMULARZ (PRAWA KOLUMNA) --- */
+        .contact-form {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .contact-form button:hover {
+            background: #a8874f; /* Ciemniejszy złoty */
+        }
+        
+        /* --- STOPKA (ZGODNA Z NOWYM LOGO) --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            margin-top: 80px;
+        }
+
+        /* Nowe style dla logotypu w stopce */
+        .footer-year {
+            display: block; 
+            margin-bottom: 5px;
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .footer-brand .footer-main {
+            font-weight: 700;
+            font-size: 0.9rem; 
+            color: var(--primary-color); 
+        }
+
+        .footer-brand .footer-sub {
+            font-weight: 500;
+            font-size: 0.65rem; 
+            letter-spacing: 3px; 
+            color: var(--text-muted); 
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html">Strona główna</a>
-  <a href="portfolio.html">Portfolio</a>
- 
-  <a href="kontakt.html">Kontakt</a>
+    <a href="index.html">Strona główna</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="kontakt.html">Kontakt</a>
 </nav>
 
-<section>
-  <h2>Kontakt</h2>
+<section class="contact-section">
+    <h2>Napisz do mnie</h2>
 
-  <div class="contact-box">
-    ✉️ <strong>antonii.kuran@gmail.com</strong><br>
-    📞 575 996 200<br>
-    📍 Łódź<br><br>
-  </div>
+    <div class="contact-info">
+        <h3>Dane Kontaktowe</h3>
+        <p>
+            Zazwyczaj odpowiadam w ciągu 24 godzin (od poniedziałku do piątku).
+            Chętnie porozmawiam o Twoim projekcie i przygotuję wycenę.
+        </p>
+
+        <p>
+            **Telefon:** <a href="tel:+48123456789">+48 123 456 789</a>
+        </p>
+        <p>
+            **E-mail:** <a href="mailto:info@frameworkstudio.pl">info@frameworkstudio.pl</a>
+        </p>
+        
+        <div class="social-icons">
+            <h3>Social Media</h3>
+            <a href="https://www.instagram.com/frameworkstudio/" target="_blank">Instagram</a> | 
+            <a href="https://www.linkedin.com/in/antoni-kuran/" target="_blank">LinkedIn</a> |
+            <a href="https://www.facebook.com/frameworkstudio/" target="_blank">Facebook</a>
+        </div>
+    </div>
+
+    <div class="contact-form">
+        <form action="mailto:info@frameworkstudio.pl?subject=Wiadomość z Framework Studio" method="POST" enctype="text/plain">
+            <div class="form-group">
+                <label for="name">Imię i Nazwisko</label>
+                <input type="text" id="name" name="Imię" required> 
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Adres E-mail</label>
+                <input type="email" id="email" name="E-mail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Temat (np. Wycena, Współpraca)</label>
+                <input type="text" id="subject" name="Temat">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Treść Wiadomości</label>
+                <textarea id="message" name="Treść" required></textarea>
+            </div>
+            
+            <button type="submit">Wyślij Wiadomość</button>
+        </form>
+    </div>
 </section>
-
 
 <footer>
     <span class="footer-year">© 2025</span>
@@ -31,25 +289,7 @@
         <span class="footer-main">FRAMEWORK</span>
         <span class="footer-sub">STUDIO</span>
     </span>
-    
 </footer>
-    
-<script>
-    let currentIndex = 0;
-    const track = document.querySelector('.carousel-track');
-    const slides = document.querySelectorAll('.slide');
-
-    function nextSlide() {
-        currentIndex++;
-        if (currentIndex >= slides.length) {
-            currentIndex = 0;
-        }
-        const offset = -currentIndex * 100;
-        track.style.transform = `translateX(${offset}%)`;
-    }
-
-    setInterval(nextSlide, 4000);
-</script>
 
 </body>
 </html>
