@@ -238,3 +238,47 @@ h2 {
     font-size: 0.9rem;
     color: var(--text-muted);
     text-align: left;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- SEKCJE PRAC (STREFY) - dla portfolio.html --- */
+.work-zone {
+    padding: 50px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #eee;
+}
+
+.work-zone h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 90px;
+    background: var(--bg-light);
+    z-index: 10;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.work-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.section-center-margin {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- CONTACT --- */
+.
