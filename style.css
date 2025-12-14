@@ -62,7 +62,7 @@ header.hero {
     padding-bottom: 50px; 
 }
 
-/* --- LOGOTYP W KARUZELI (ANTONI KURAN - PRZYWRÓCONY SUBTELNY STYL) --- */
+/* --- LOGOTYP W KARUZELI (ANTONI KURAN) --- */
 .hero-content {
     position: relative;
     z-index: 10;
@@ -74,22 +74,19 @@ header.hero {
 
 .hero-content h1 {
     font-size: 2.8rem;
-    font-weight: 500; /* Średnia waga dla imienia */
+    font-weight: 500; 
     margin-bottom: 5px;
     line-height: 1;
 }
 
 .hero-content p {
     font-size: 1.1rem;
-    font-weight: 300; /* Cienka waga dla zawodu */
+    font-weight: 300; 
     letter-spacing: 8px;
     text-transform: uppercase;
     margin-top: 15px;
 }
 /* ------------------------------------------- */
-
-/* Usunięto: #framework-main i #studio-sub z HERO */
-
 
 /* --- Karuzela i Tło --- */
 .carousel-track-container {
@@ -151,12 +148,14 @@ h2 {
     box-shadow: 20px 20px 0px var(--accent-color); 
 }
 
-/* --- SERVICE GRID (4 Kafelki) - dla index.html --- */
+/* --- SERVICE GRID (6 Kafelków) - dla index.html --- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* ZMIANA: Wymuszenie 3 kolumn na dużych ekranach (3x2) */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
-    margin-top: 40px;
+    max-width: 1000px; /* Ograniczenie szerokości siatki */
+    margin: 40px auto 0; /* Centrowanie siatki */
 }
 
 .service-card {
@@ -324,90 +323,4 @@ h2 {
 }
 
 .contact-form {
-    background: #fff; 
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-}
-
-/* --- FOOTER (Ujednolicone style) --- */
-footer {
-    padding: 40px;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #999;
-    border-top: 1px solid #eee;
-    margin-top: 80px;
-}
-
-.footer-year {
-    display: block; 
-    margin-bottom: 5px;
-}
-
-.footer-brand {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1;
-}
-
-.footer-brand .footer-main {
-    font-weight: 700;
-    font-size: 0.9rem; 
-    color: var(--primary-color); 
-}
-
-.footer-brand .footer-sub {
-    font-weight: 500;
-    font-size: 0.65rem; 
-    letter-spacing: 3px; 
-    color: var(--text-muted); 
-}
-
-/* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
-@media (max-width: 900px) {
-    /* RESPONSYWNOŚĆ GŁÓWNA */
-    section {
-        padding: 50px 3%; 
-    }
-    
-    /* ZMNIEJSZENIE NAPISU ANTONI KURAN (PRZYWRÓCONE) */
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    .hero-content p { 
-        font-size: 0.9rem;
-        letter-spacing: 4px; 
-    }
-    
-    /* SEKCJA O MNIE */
-    .about-container { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-    }
-    .about-container img { 
-        margin: 0 auto 40px; 
-        box-shadow: 10px 10px 0px var(--accent-color); 
-    }
-    
-    /* SEKCJA KONTAKT */
-    .contact-section { 
-        grid-template-columns: 1fr; 
-        gap: 40px; 
-    }
-    
-    /* SIATKI NA PORTFOLIO/USŁUGI */
-    .portfolio-grid,
-    .services-grid {
-        grid-template-columns: 1fr; 
-    }
-    
-    /* ZMNIEJSZENIE CZCIONEK OGÓLNYCH */
-    h2 {
-        font-size: 2rem;
-    }
-    .work-zone h3 {
-        font-size: 1.5rem;
-    }
-}
+    background: #fff;
