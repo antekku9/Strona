@@ -1,170 +1,378 @@
-/* RESET */
+/* --- ZMIENNE KOLORÓW I FONTU --- */
+:root {
+    --primary-color: #222;
+    --accent-color: #c5a059; /* Złoty akcent */
+    --bg-light: #fdfdfd;
+    --text-muted: #666;
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- RESET & GLOBALNE --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #fafafa;
-  color: #222;
-  line-height: 1.6;
+    /* Zmieniono na Montserrat, który jest spójny ze stylem portfolio */
+    font-family: 'Montserrat', sans-serif; 
+    background: var(--bg-light);
+    color: var(--primary-color);
+    line-height: 1.6;
 }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 nav {
-  width: 100%;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    width: 100%;
+    padding: 20px 5%; /* Zmieniono na % dla lepszej responsywności */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
-  text-decoration: none;
-  color: #222;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: 0.2s;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.85rem; /* Zmniejszono font i dodano uppercase */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
 }
 
 nav a:hover {
-  color: #999;
+    color: var(--accent-color);
 }
 
-/* HEADER */
-header {
-  height: 70vh;
-  background: url('img/header.jpg') center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* --- HEADER / HERO SECTION (Karuzela) --- */
+header.hero {
+    height: 75vh; /* Ujednolicona wysokość */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Tekst na dole */
+    overflow: hidden;
+    background-color: #fff; 
+    padding-bottom: 50px; 
 }
 
-header h1 {
-  color: white;
-  font-size: 3rem;
-  text-shadow: 0px 0px 10px #000;
+/* --- LOGOTYP W KARUZELI (FRAMEWORK STUDIO) --- */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white; 
+    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* SECTIONS */
+#framework-main {
+    font-size: 4rem; 
+    font-weight: 700; 
+    margin-bottom: 0;
+    line-height: 1; 
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+#studio-sub {
+    font-size: 1.8rem; 
+    font-weight: 300; 
+    letter-spacing: 10px; 
+    text-transform: uppercase;
+    margin-top: 5px; 
+}
+
+/* --- Karuzela i Tło --- */
+.carousel-track-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    filter: brightness(0.7); 
+}
+/* ------------------------------------------- */
+
+/* --- SEKCJE OGÓLNE --- */
 section {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 80px 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
 }
 
 h2 {
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  text-align: center;
-  font-weight: 600;
+    font-size: 2.5rem; /* Zmieniono dla spójności */
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
 }
 
-/* ABOUT */
+/* --- ABOUT --- */
 .about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Ddjusted ratio */
+    gap: 60px; /* Zwiększono odstęp */
+    align-items: center;
 }
 
 .about-container img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 5px;
+    /* Złoty akcent zamiast box-shadow */
+    box-shadow: 20px 20px 0px var(--accent-color); 
 }
 
-/* EXPERIENCE */
-.experience-box {
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* --- SERVICE GRID (4 Kafelki) - dla index.html --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
 }
 
-.experience-box h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+.service-card {
+    display: block;
+    background: white;
+    padding: 40px 25px;
+    border: 1px solid #eee;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--primary-color);
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.experience-box span {
-  color: #777;
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-color: var(--accent-color);
 }
 
-/* PORTFOLIO GRID */
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.service-card p {
+    color: var(--text-muted);
+}
+
+
+/* --- PORTFOLIO GRID (6 Kafelków z linkami) - dla portfolio.html --- */
+.portfolio-section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-section > p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 20px;
+    margin-bottom: 100px;
 }
 
 .portfolio-item {
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  cursor: pointer;
+    display: block;
+    background: white;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
+    transition: var(--transition);
+    cursor: pointer;
+    text-align: left;
+    min-height: 150px;
+    text-decoration: none;
 }
 
 .portfolio-item:hover {
-  transform: translateY(-5px);
-}
-
-.portfolio-item img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
+    transform: scale(1.05); 
+    border: 1px solid var(--accent-color); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 5; 
 }
 
 .portfolio-item h3 {
-  text-align: center;
-  margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--primary-color);
 }
 
-/* CONTACT */
-.contact-box {
-  background: #fff;
-  padding: 40px;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-size: 1.2rem;
+.portfolio-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: left;
+    margin: 0;
+    line-height: 1.4;
 }
 
-/* FOOTER */
+/* --- SEKCJE PRAC (STREFY) - dla portfolio.html --- */
+.work-zone {
+    padding: 50px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #eee;
+}
+
+.work-zone h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 90px;
+    background: var(--bg-light);
+    z-index: 10;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.work-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.section-center-margin {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- CONTACT --- */
+.contact-section {
+    padding: 80px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.contact-info h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    margin-top: 10px;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-info a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.contact-form {
+    background: #fff; /* Ujednolicone tło */
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Zachowanie cienia, jak w Twoim pliku */
+}
+
+/* --- FOOTER (Ujednolicone style) --- */
+footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #eee;
+    margin-top: 80px;
+}
+
 .footer-year {
-    display: block; /* Ustawienie roku na osobnym wierszu */
+    display: block; 
     margin-bottom: 5px;
 }
 
 .footer-brand {
-    display: inline-flex; /* Umożliwia centrowanie w pionie */
+    display: inline-flex;
     flex-direction: column;
-    align-items: center; /* Wyśrodkowanie tekstu "STUDIO" pod "FRAMEWORK" */
+    align-items: center;
     line-height: 1;
 }
 
 .footer-brand .footer-main {
     font-weight: 700;
-    font-size: 0.9rem; /* Normalna czcionka */
-    color: var(--primary-color); /* Ciemniejszy kolor dla lepszej widoczności */
+    font-size: 0.9rem; 
+    color: var(--primary-color); 
 }
 
 .footer-brand .footer-sub {
     font-weight: 500;
-    font-size: 0.65rem; /* Mniejsze "Studio" */
-    letter-spacing: 3px; /* Rozstrzelenie liter */
-    color: var(--text-muted); /* Subtelniejszy kolor */
+    font-size: 0.65rem; 
+    letter-spacing: 3px; 
+    color: var(--text-muted); 
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 900px) {
+    .about-container { grid-template-columns: 1fr; text-align: center; }
+    .about-container img { margin: 0 auto 40px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p { letter-spacing: 4px; }
+    .contact-section { grid-template-columns: 1fr; } /* Responsywność dla kontaktu */
 }
