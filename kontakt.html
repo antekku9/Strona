@@ -24,7 +24,22 @@
   </div>
 </section>
 
-<footer>© 2025 Antoni Kuran</footer>
+<script>
+    let currentIndex = 0;
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        }
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(nextSlide, 4000);
+</script>
 
 </body>
 </html>
