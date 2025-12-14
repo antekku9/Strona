@@ -154,8 +154,8 @@ h2 {
     /* ZMIANA: Wymuszenie 3 kolumn na dużych ekranach (3x2) */
     grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
-    max-width: 1000px; /* Ograniczenie szerokości siatki */
-    margin: 40px auto 0; /* Centrowanie siatki */
+    max-width: 1000px; 
+    margin: 40px auto 0; 
 }
 
 .service-card {
@@ -323,4 +323,91 @@ h2 {
 }
 
 .contact-form {
-    background: #fff;
+    background: #fff; 
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+}
+
+/* --- FOOTER (Ujednolicone style) --- */
+footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #eee;
+    margin-top: 80px;
+}
+
+.footer-year {
+    display: block; 
+    margin-bottom: 5px;
+}
+
+.footer-brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.footer-brand .footer-main {
+    font-weight: 700;
+    font-size: 0.9rem; 
+    color: var(--primary-color); 
+}
+
+.footer-brand .footer-sub {
+    font-weight: 500;
+    font-size: 0.65rem; 
+    letter-spacing: 3px; 
+    color: var(--text-muted); 
+}
+
+/* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
+@media (max-width: 900px) {
+    /* RESPONSYWNOŚĆ GŁÓWNA */
+    section {
+        padding: 50px 3%; 
+    }
+    
+    /* ZMNIEJSZENIE NAPISU ANTONI KURAN */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p { 
+        font-size: 0.9rem;
+        letter-spacing: 4px; 
+    }
+    
+    /* SEKCJA O MNIE */
+    .about-container { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    .about-container img { 
+        margin: 0 auto 40px; 
+        box-shadow: 10px 10px 0px var(--accent-color); 
+    }
+    
+    /* SEKCJA KONTAKT */
+    .contact-section { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    
+    /* SIATKI NA PORTFOLIO/USŁUGI: NAPRAWA DLA MOBILNEGO */
+    /* Zastosowanie 1 kolumny poniżej 900px dla obu siatek */
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* ZMNIEJSZENIE CZCIONEK OGÓLNYCH */
+    h2 {
+        font-size: 2rem;
+    }
+    .work-zone h3 {
+        font-size: 1.5rem;
+    }
+}
