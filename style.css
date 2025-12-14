@@ -62,7 +62,7 @@ header.hero {
     padding-bottom: 50px; 
 }
 
-/* --- LOGOTYP W KARUZELI (FRAMEWORK STUDIO) --- */
+/* --- LOGOTYP W KARUZELI (ANTONI KURAN - PRZYWRÓCONY SUBTELNY STYL) --- */
 .hero-content {
     position: relative;
     z-index: 10;
@@ -70,27 +70,26 @@ header.hero {
     color: white; 
     text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-#framework-main {
-    font-size: 4rem; 
-    font-weight: 700; 
-    margin-bottom: 0;
-    line-height: 1; 
-    text-transform: uppercase;
-    letter-spacing: 5px;
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 500; /* Średnia waga dla imienia */
+    margin-bottom: 5px;
+    line-height: 1;
 }
 
-#studio-sub {
-    font-size: 1.8rem; 
-    font-weight: 300; 
-    letter-spacing: 10px; 
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 300; /* Cienka waga dla zawodu */
+    letter-spacing: 8px;
     text-transform: uppercase;
-    margin-top: 5px; 
+    margin-top: 15px;
 }
+/* ------------------------------------------- */
+
+/* Usunięto: #framework-main i #studio-sub z HERO */
+
 
 /* --- Karuzela i Tło --- */
 .carousel-track-container {
@@ -370,17 +369,16 @@ footer {
 @media (max-width: 900px) {
     /* RESPONSYWNOŚĆ GŁÓWNA */
     section {
-        padding: 50px 3%; /* Mniejszy padding na małych ekranach */
+        padding: 50px 3%; 
     }
     
-    /* ZMNIEJSZENIE LOGOTYPU HERO */
-    #framework-main { 
-        font-size: 2.5rem; 
-        letter-spacing: 3px;
+    /* ZMNIEJSZENIE NAPISU ANTONI KURAN (PRZYWRÓCONE) */
+    .hero-content h1 {
+        font-size: 2.2rem;
     }
-    #studio-sub { 
-        font-size: 1.2rem; 
-        letter-spacing: 5px; 
+    .hero-content p { 
+        font-size: 0.9rem;
+        letter-spacing: 4px; 
     }
     
     /* SEKCJA O MNIE */
@@ -390,7 +388,7 @@ footer {
     }
     .about-container img { 
         margin: 0 auto 40px; 
-        box-shadow: 10px 10px 0px var(--accent-color); /* Mniejszy cień na mobilnym */
+        box-shadow: 10px 10px 0px var(--accent-color); 
     }
     
     /* SEKCJA KONTAKT */
@@ -399,10 +397,10 @@ footer {
         gap: 40px; 
     }
     
-    /* SIATKI NA PORTFOLIO/USŁUGI (Zapewnienie większego paska dla kafelków) */
+    /* SIATKI NA PORTFOLIO/USŁUGI */
     .portfolio-grid,
     .services-grid {
-        grid-template-columns: 1fr; /* Zawsze jedna kolumna na mobilnym */
+        grid-template-columns: 1fr; 
     }
     
     /* ZMNIEJSZENIE CZCIONEK OGÓLNYCH */
