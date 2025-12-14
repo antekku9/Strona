@@ -330,16 +330,22 @@ h2 {
 
 /* --- FOOTER (OSTATECZNIE NAPRAWIONY LOGOTYP) --- */
 footer {
+    /* Właściwości ogólne */
     padding: 40px;
-    text-align: center;
     font-size: 0.8rem;
     color: #999;
     border-top: 1px solid #eee;
     margin-top: 80px;
-    /* Używamy Flexbox, aby wyśrodkować wszystkie elementy */
+
+    /* Resetowanie potencjalnych konfliktów */
+    width: 100%; 
+    max-width: none;
+    
+    /* Właściwy Flexbox do centrowania */
     display: flex; 
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* CENTROWANIE */
+    text-align: center;
 }
 
 .footer-year {
@@ -348,12 +354,10 @@ footer {
     color: var(--text-muted);
 }
 
-/* Nowe klasy dla bezpośredniej kontroli nad elementami */
 .footer-main-brand {
     font-weight: 700;
     font-size: 0.9rem; 
     color: var(--primary-color); 
-    /* Usunięto problematyczny line-height */
 }
 
 .footer-sub-brand {
@@ -361,23 +365,6 @@ footer {
     font-size: 0.65rem; 
     letter-spacing: 3px; 
     color: var(--text-muted); 
-    /* Usunięto problematyczny line-height */
-}
-
-/* Nowe klasy dla bezpośredniej kontroli nad elementami */
-.footer-main-brand {
-    font-weight: 700;
-    font-size: 0.9rem; 
-    color: var(--primary-color); 
-    line-height: 1.2;
-}
-
-.footer-sub-brand {
-    font-weight: 500;
-    font-size: 0.65rem; 
-    letter-spacing: 3px; 
-    color: var(--text-muted); 
-    line-height: 1.2;
 }
 
 
@@ -428,42 +415,3 @@ footer {
     }
 }
 
-/* --- FOOTER (OSTATECZNIE NAPRAWIONY LOGOTYP I CENTROWANIE) --- */
-footer {
-    /* Właściwości ogólne */
-    padding: 40px;
-    font-size: 0.8rem;
-    color: #999;
-    border-top: 1px solid #eee;
-    margin-top: 80px;
-
-    /* Resetowanie potencjalnych konfliktów */
-    width: 100%; 
-    max-width: none;
-    
-    /* Właściwy Flexbox do centrowania */
-    display: flex; 
-    flex-direction: column;
-    align-items: center; /* CENTROWANIE */
-    text-align: center;
-}
-
-.footer-year {
-    display: block; 
-    margin-bottom: 5px;
-    color: var(--text-muted);
-}
-
-.footer-main-brand {
-    font-weight: 700;
-    font-size: 0.9rem; 
-    color: var(--primary-color); 
-}
-
-.footer-sub-brand {
-    font-weight: 500;
-    font-size: 0.65rem; 
-    letter-spacing: 3px; 
-    color: var(--text-muted); 
-}
-/* ... reszta pliku CSS pozostaje bez zmian ... */
