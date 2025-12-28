@@ -203,47 +203,16 @@ h2 {
     border: 1px solid var(--accent-color); 
 }
 
-/* --- STREFY PRAC (MASONRY & GRID) --- */
-.work-zone {
-    padding: 50px 0;
-    margin-bottom: 50px;
-    border-bottom: 1px solid #eee;
-}
-
-.work-zone h3 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 40px;
-    position: sticky;
-    top: 90px;
-    background: var(--bg-light);
-    z-index: 10;
-}
-
-/* MASONRY DLA FOTOGRAFII I GRAFIKI (3 kolumny, naturalna wysokość) */
-.work-grid {
-    display: block; /* Masonry wymaga block + column-count */
-    column-count: 3;
-    column-gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.work-grid img {
-    width: 100%;
-    height: auto; /* Naturalna wysokość zdjęcia */
-    display: block;
-    margin-bottom: 25px;
-    break-inside: avoid;
-    border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    transition: var(--transition);
-}
-
-.work-grid img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
+<section id="fotografia-prace" class="work-zone">
+    <h3>Fotografia</h3>
+    <div class="work-grid">
+        <img src="img/pionowe1.jpg" alt="Foto 1">
+        <img src="img/pionowe2.jpg" alt="Foto 2">
+        <img src="img/pionowe3.jpg" alt="Foto 3">
+        <img src="img/kwadrat1.jpg" alt="Foto 4">
+        ...
+    </div>
+</section>
 
 /* NADPISANIE DLA UKŁADÓW SPECJALNYCH (Powrót do Grid) */
 .grid-3-layout, .grid-2-layout {
@@ -335,3 +304,4 @@ footer {
         column-count: 1;
     }
 }
+
