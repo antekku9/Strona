@@ -168,7 +168,7 @@ h2 {
     border-color: var(--accent-color);
 }
 
-/* --- STREFY PRAC (STAŁY UKŁAD 3 KOLUMNY) --- */
+/* --- STREFY PRAC (BAZA) --- */
 .work-zone {
     padding: 50px 0;
     margin-bottom: 50px;
@@ -181,10 +181,8 @@ h2 {
     margin-bottom: 40px;
 }
 
-/* Wymuszamy 3 równe kolumny dla głównych sekcji */
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -192,8 +190,7 @@ h2 {
 
 .work-grid img {
     width: 100%;
-    aspect-ratio: 3 / 4; 
-    object-fit: cover;    
+    object-fit: cover; 
     display: block;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
@@ -205,26 +202,43 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* --- UKŁADY SPECJALNE --- */
-.grid-3-layout {
-    grid-template-columns: repeat(2, 1fr) !important;
-}
+/* --- PRECYZYJNE USTAWIENIA DLA KATEGORII --- */
 
-.grid-3-layout img:last-child {
+/* 1. Fotografia: 3 pionowe (góra), 3 kwadraty (dół) */
+#fotografia-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
+#fotografia-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
+#fotografia-prace .work-grid img:nth-child(n+4) { aspect-ratio: 1 / 1; }
+
+/* 2. Grafika 2D: 3 kwadraty (góra), 3 pionowe (dół) */
+#grafika2d-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
+#grafika2d-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
+#grafika2d-prace .work-grid img:nth-child(n+4) { aspect-ratio: 3 / 4; }
+
+/* 3. Modele 3D: 2 poziome, 1 poziomy wycentrowany */
+#modele3d-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
+#modele3d-prace .work-grid img { aspect-ratio: 16 / 9; }
+#modele3d-prace .work-grid img:nth-child(3) {
     grid-column: 1 / span 2;
     width: 50%;
     justify-self: center;
 }
 
-.grid-2-layout {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: 900px;
+/* 4. E-commerce: 1 pionowy, 1 poziomy */
+#ecommerce-prace .work-grid { grid-template-columns: 1fr 2fr; align-items: center; }
+#ecommerce-prace .work-grid img:nth-child(1) { aspect-ratio: 3 / 4; }
+#ecommerce-prace .work-grid img:nth-child(2) { aspect-ratio: 16 / 9; }
+
+/* 5. Projekty 2D: 2 pionowe, pod nimi 1 poziomy */
+#animacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
+#animacje-prace .work-grid img:nth-child(-n+2) { aspect-ratio: 3 / 4; }
+#animacje-prace .work-grid img:nth-child(3) {
+    grid-column: 1 / span 2;
+    aspect-ratio: 16 / 9;
 }
 
-.section-center-margin {
-    max-width: 1100px;
-    margin: 0 auto;
-}
+/* 6. Proces & Strategia: 2 pionowe obok siebie */
+#konsultacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
+#konsultacje-prace .work-grid img { aspect-ratio: 3 / 4; }
 
 /* --- KONTAKT & FOOTER --- */
 .contact-section {
@@ -248,19 +262,17 @@ footer {
 
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
-    .work-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .grid-3-layout img:last-child {
-        width: 100%;
-    }
+    .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .work-grid img { aspect-ratio: 1 / 1 !important; width: 100% !important; }
+    
+    #modele3d-prace .work-grid img:nth-child(3),
+    #animacje-prace .work-grid img:nth-child(3) { grid-column: auto; width: 100%; }
+    
     .about-container, .contact-section { 
         grid-template-columns: 1fr; 
     }
 }
 
 @media (max-width: 600px) {
-    .work-grid, .grid-3-layout, .grid-2-layout {
-        grid-template-columns: 1fr !important; 
-    }
+    .work-grid { grid-template-columns: 1fr !important; }
 }
