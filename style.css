@@ -168,7 +168,7 @@ h2 {
     border-color: var(--accent-color);
 }
 
-/* --- STREFY PRAC (UKŁAD ELastyczny - FLEXBOX) --- */
+/* --- STREFY PRAC (NAPRAWIONY FLEXBOX) --- */
 .work-zone {
     padding: 50px 0;
     margin-bottom: 50px;
@@ -180,7 +180,7 @@ h2 {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 40px;
-    position: relative; /* Naprawa pływającego paska */
+    position: relative;
     z-index: 5;
     background: var(--bg-light);
 }
@@ -189,23 +189,17 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Zdjęcia od lewej, nie rozciągają się sztucznie */
 }
 
 .work-grid img {
-    height: 350px;   /* Stała wysokość rzędu gwarantuje brak schodków */
-    flex-grow: 1;    /* Zdjęcia wypełniają szerokość linii */
-    width: auto;     /* Szerokość wynika z naturalnych proporcji */
+    height: 350px;       /* Stała wysokość rzędu */
+    width: auto;         /* Szerokość wynika z proporcji zdjęcia */
+    flex: 0 1 auto;      /* Zdjęcie nie rośnie na siłę (flex-grow: 0) */
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     transition: var(--transition);
-}
-
-/* Zapobieganie nadmiernemu rozciąganiu ostatniego zdjęcia */
-.work-grid::after {
-    content: "";
-    flex-grow: 10;
 }
 
 .work-grid img:hover {
@@ -213,22 +207,39 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* NADPISANIE DLA UKŁADÓW SPECJALNYCH */
+/* UKŁADY SPECJALNE - Powrót do Grid tam, gdzie wymagane */
 .grid-3-layout, .grid-2-layout {
     display: grid !important;
     gap: 25px;
 }
 
 .grid-3-layout { grid-template-columns: repeat(2, 1fr); }
+.grid-3-layout img { 
+    height: auto; 
+    width: 100%; 
+}
+
 .grid-3-layout img:last-child {
     grid-column: 1 / span 2;
     width: 50%;
     justify-self: center;
-    height: auto; 
 }
 
-.grid-2-layout { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; }
-.grid-2-layout img, .grid-3-layout img { margin-bottom: 0; height: auto; }
+.grid-2-layout { 
+    grid-template-columns: repeat(2, 1fr); 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.grid-2-layout img { 
+    height: auto; 
+    width: 100%; 
+}
+
+.section-center-margin {
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
 /* --- KONTAKT & FOOTER --- */
 .contact-section {
@@ -252,7 +263,11 @@ footer {
 
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
-    .work-grid img { height: 250px; }
+    .work-grid { justify-content: center; }
+    .work-grid img { 
+        height: 250px; 
+        flex: 1 1 auto; /* Na komórkach mogą się lekko rozciągać */
+    }
     .about-container, .contact-section { grid-template-columns: 1fr; }
     .grid-3-layout, .grid-2-layout { grid-template-columns: 1fr !important; }
     .grid-3-layout img:last-child { width: 100%; }
