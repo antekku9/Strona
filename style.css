@@ -260,24 +260,17 @@ h2 {
 }
 
 .work-grid {
-    display: grid;
-    /* Zwiększamy nieco minmax, by siatka była stabilna */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1300px;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* KLUCZOWA ZMIANA TUTAJ: */
 .work-grid img {
-    width: 100%;
-    /* Domyślnie ustawiamy prostokąt (np. 3:2) */
-    aspect-ratio: 3 / 2; 
-    object-fit: cover; /* Zdjęcie wypełni kadr, nadmiar zostanie ucięty, a nie rozciągnięty */
-    display: block;
+    height: 250px; /* Ustalasz stałą wysokość rzędu */
+    flex-grow: 1;  /* Obrazy "puchną", by wypełnić całą linię */
+    width: auto;   /* Szerokość dopasuje się sama do proporcji */
+    object-fit: cover;
     border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: var(--transition);
 }
 
 /* Klasa dla zdjęć, które mają być kwadratowe */
@@ -496,4 +489,5 @@ footer {
         font-size: 1.5rem;
     }
 }
+
 
