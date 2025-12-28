@@ -259,29 +259,69 @@ h2 {
     z-index: 10;
 }
 
+/* GŁÓWNA SIATKA - Domyślnie 3 kolumny (dla Fotografia, Grafika 2D) */
 .work-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* UNIWERSALNY STYL OBRAZKÓW */
 .work-grid img {
-    height: 250px; /* Ustalasz stałą wysokość rzędu */
-    flex-grow: 1;  /* Obrazy "puchną", by wypełnić całą linię */
-    width: auto;   /* Szerokość dopasuje się sama do proporcji */
+    width: 100%;
+    aspect-ratio: 3 / 2; /* Stały wymiar prostokąta */
     object-fit: cover;
+    display: block;
     border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: var(--transition);
 }
 
-/* Klasa dla zdjęć, które mają być kwadratowe */
-.work-grid img.square {
-    aspect-ratio: 1 / 1;
-}
-
-/* Opcjonalnie: efekt po najechaniu, by portfolio było bardziej interaktywne */
 .work-grid img:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* UKŁAD SPECJALNY: 3 zdjęcia (2 na górze, 1 wycentrowane pod nimi) 
+   Zastosuj tę klasę dodatkowo w HTML dla Modele 3D i Projekty 2D */
+.grid-3-layout {
+    grid-template-columns: repeat(2, 1fr); /* Bazowo 2 kolumny */
+}
+
+.grid-3-layout img:last-child {
+    grid-column: 1 / span 2; /* Rozciąga ostatnie zdjęcie na obie kolumny */
+    width: 50%;              /* Zmniejsza do szerokości pojedynczego zdjęcia powyżej */
+    justify-self: center;    /* Centruje w rzędzie */
+}
+
+/* UKŁAD SPECJALNY: 2 kolumny (E-commerce) 
+   Zastosuj tę klasę dodatkowo w HTML dla E-commerce */
+.grid-2-layout {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px; /* Nieco węższa sekcja dla 2 zdjęć wygląda lepiej */
+}
+
+.section-center-margin {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- RESPONSYWNOŚĆ DLA SIATEK PRAC --- */
+@media (max-width: 900px) {
+    .work-grid, .grid-3-layout, .grid-2-layout {
+        grid-template-columns: 1fr; /* Wszystko w jednej kolumnie na tabletach/tel */
+    }
+    
+    .grid-3-layout img:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+    
+    .work-grid img {
+        aspect-ratio: auto; /* Na komórkach pozwalamy na naturalną wysokość */
+    }
 }
 
 /* --- SEKCJA KONTAKT (OD TERAZ TUTAJ SĄ STYLE KONTAKTOWE!) --- */
@@ -489,5 +529,6 @@ footer {
         font-size: 1.5rem;
     }
 }
+
 
 
