@@ -261,25 +261,35 @@ h2 {
 
 .work-grid {
     display: grid;
+    /* Zwiększamy nieco minmax, by siatka była stabilna */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 1300px;
     margin: 0 auto;
 }
 
+/* KLUCZOWA ZMIANA TUTAJ: */
 .work-grid img {
     width: 100%;
-    height: auto;
+    /* Domyślnie ustawiamy prostokąt (np. 3:2) */
+    aspect-ratio: 3 / 2; 
+    object-fit: cover; /* Zdjęcie wypełni kadr, nadmiar zostanie ucięty, a nie rozciągnięty */
     display: block;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: var(--transition);
 }
 
-.section-center-margin {
-    max-width: 900px;
-    margin: 0 auto;
+/* Klasa dla zdjęć, które mają być kwadratowe */
+.work-grid img.square {
+    aspect-ratio: 1 / 1;
 }
 
+/* Opcjonalnie: efekt po najechaniu, by portfolio było bardziej interaktywne */
+.work-grid img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
 
 /* --- SEKCJA KONTAKT (OD TERAZ TUTAJ SĄ STYLE KONTAKTOWE!) --- */
 .contact-section {
@@ -486,3 +496,4 @@ footer {
         font-size: 1.5rem;
     }
 }
+
