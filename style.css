@@ -1,121 +1,321 @@
-3<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio – FRAMEWORK STUDIO</title>
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
+/* --- ZMIENNE KOLORÓW I FONTU --- */
+:root {
+    --primary-color: #222;
+    --accent-color: #c5a059; /* Złoty akcent */
+    --bg-light: #fdfdfd;
+    --text-muted: #666;
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-<nav>
-    <a href="index.html">Strona główna</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="oferta.html">Oferta</a>
-    <a href="kontakt.html">Kontakt</a>
-</nav>
+/* --- RESET & GLOBALNE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-<section class="portfolio-section">
-    <h2>Portfolio</h2>
-    <p>Moje wybrane kategorie projektów i usług</p>
+body {
+    font-family: 'Montserrat', sans-serif; 
+    background: var(--bg-light);
+    color: var(--primary-color);
+    line-height: 1.6;
+}
 
-    <div class="portfolio-grid">
-        <a href="#fotografia-prace" class="portfolio-item">
-            <h3>Fotografia</h3>
-            <p>Profesjonalne packshoty, zdjęcia reklamowe i sesje aranżowane.</p>
-        </a>
+/* --- NAVBAR --- */
+nav {
+    width: 100%;
+    padding: 20px 5%; 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        <a href="#grafika2d-prace" class="portfolio-item">
-            <h3>Grafika 2D & Branding</h3>
-            <p>Projektowanie logo, identyfikacja wizualna, banery i materiały do druku (DTP).</p>
-        </a>
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.85rem; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
 
-        <a href="#modele3d-prace" class="portfolio-item">
-            <h3>Modele & Wizualizacje 3D</h3>
-            <p>Kompleksowe tworzenie fotorealistycznych renderów produktów i wizualizacji.</p>
-        </a>
-        
-        <a href="#ecommerce-prace" class="portfolio-item">
-            <h3>E-commerce Solutions</h3>
-            <p>Kompleksowa obsługa graficzna sklepów internetowych i platform sprzedażowych.</p>
-        </a>
+nav a:hover {
+    color: var(--accent-color);
+}
 
-        <a href="#animacje-prace" class="portfolio-item">
-            <h3>Animacje</h3>
-            <p>Krótkie animacje produktowe, montaż wideo i materiały na social media.</p>
-        </a>
-        
-        <a href="#konsultacje-prace" class="portfolio-item">
-            <h3>Konsultacje Kreatywne</h3>
-            <p>Strategie wizualne, pomoc w planowaniu kampanii reklamowych i wizerunku.</p>
-        </a>
+/* --- HEADER / HERO --- */
+header.hero {
+    height: 75vh; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    overflow: hidden;
+    background-color: #fff; 
+    padding-bottom: 50px; 
+}
 
-    </div>
-</section>
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white; 
+    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
+    padding: 20px;
+}
 
-<section id="fotografia-prace" class="work-zone section-center-margin">
-    <h3>Fotografia</h3>
-    <div class="work-grid">
-        <img src="img/fotografia_1.jpg" alt="Przykład pracy: packshot 1">
-        <img src="img/fotografia_2.jpg" alt="Przykład pracy: packshot 2">
-        <img src="img/fotografia_3.jpg" alt="Przykład pracy: packshot 3">
-        <img src="img/fotografia_4.jpg" alt="Przykład pracy: packshot 4">
-        <img src="img/fotografia_5.jpg" alt="Przykład pracy: packshot 5">
-        <img src="img/fotografia_6.jpg" alt="Przykład pracy: packshot 6">
-    </div>
-</section>
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 500; 
+    margin-bottom: 5px;
+    line-height: 1;
+}
 
-<section id="grafika2d-prace" class="work-zone section-center-margin">
-    <h3>Grafika 2D & Branding</h3>
-    <div class="work-grid">
-        <img src="img/grafika_1.jpg" alt="Przykład pracy: Reklama">
-        <img src="img/grafika_2.jpg" alt="Przykład pracy: Baner">
-        <img src="img/grafika_3.jpg" alt="Przykład pracy: Reklama 2">
-      
-    </div>
-</section>
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 300; 
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
 
-<section id="modele3d-prace" class="work-zone section-center-margin">
-    <h3>Modele & Wizualizacje 3D</h3>
-    <div class="work-grid">
-        <img src="img/model3d_1.jpg" alt="Przykład pracy: Render 1">
-        <img src="img/model3d_2.jpg" alt="Przykład pracy: Render 2">
-    </div>
-</section>
+.carousel-track-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
-<section id="ecommerce-prace" class="work-zone section-center-margin">
-    <h3>E-commerce Solutions</h3>
-    <div class="work-grid">
-        <img src="img/ecommerce_1.jpg" alt="Przykład pracy: Miniatura aukcji">
-        <img src="img/ecommerce_2.jpg" alt="Przykład pracy: Grafika na sklep">
-    </div>
-</section>
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+}
 
-<section id="animacje-prace" class="work-zone section-center-margin">
-    <h3>Projekty 2D</h3>
-    <div class="work-grid">
-        <img src="img/wizualizacja2d_1.jpg" alt="Przykład pracy: wizualizacja2d 1">
-        <img src="img/wizualizacja2d_2.jpg" alt="Przykład pracy: wizualizacja2d 2">
-        <img src="img/wizualizacja3d_3.jpg" alt="Przykład pracy: wizualizacja2d 3">
-        <img src="img/wizualizacja2d_4.jpg" alt="Przykład pracy: wizualizacja2d 2">
-    </div>
-</section>
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
 
-<section id="konsultacje-prace" class="work-zone section-center-margin">
-    <h3>Konsultacje Kreatywne</h3>
-    <div class="work-grid">
-        <img src="img/konsultacje_1.jpg" alt="Przykład pracy: Moodboard 1">
-        <img src="img/konsultacje_2.jpg" alt="Przykład pracy: Moodboard 2">
-    </div>
-</section>
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    filter: brightness(0.7); 
+}
 
-<footer>
-    <span class="footer-year">© 2025</span>
-    <span class="footer-main-brand">FRAMEWORK</span>
-    <span class="footer-sub-brand">STUDIO</span>
-</footer>
-    
-</body>
-</html>
+/* --- SEKCJE OGÓLNE --- */
+section {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+h2 {
+    font-size: 2.5rem; 
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* --- ABOUT --- */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 60px; 
+    align-items: center;
+}
+
+.about-container img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 5px;
+    box-shadow: 20px 20px 0px var(--accent-color); 
+}
+
+/* --- SERVICE & PORTFOLIO GRID --- */
+.services-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 25px;
+    margin: 40px auto;
+}
+
+.service-card, .portfolio-item {
+    display: block;
+    background: white;
+    padding: 40px 25px;
+    border: 1px solid #eee;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service-card:hover, .portfolio-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+/* --- STREFY PRAC (BAZA) --- */
+.work-zone {
+    padding: 50px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #eee;
+}
+
+.work-zone h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.work-grid {
+    display: grid;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.work-grid img {
+    width: 100%;
+    object-fit: cover; 
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+
+.work-grid img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* --- PRECYZYJNE USTAWIENIA DLA KATEGORII --- */
+
+/* 1. Fotografia: 3 pionowe (góra), 3 kwadraty (dół) */
+#fotografia-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
+#fotografia-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
+#fotografia-prace .work-grid img:nth-child(n+4) { aspect-ratio: 1 / 1; }
+
+/* 2. Grafika 2D: 3 kwadraty (góra), 3 pionowe (dół) */
+#grafika2d-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
+#grafika2d-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
+#grafika2d-prace .work-grid img:nth-child(n+4) { aspect-ratio: 3 / 4; }
+
+/* 3. Modele 3D: 2 poziome, 1 poziomy wycentrowany */
+#modele3d-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
+#modele3d-prace .work-grid img { aspect-ratio: 16 / 9; }
+#modele3d-prace .work-grid img:nth-child(3) {
+    grid-column: 1 / span 2;
+    width: 50%;
+    justify-self: center;
+}
+
+/* 4. E-commerce: 1 pionowy, 1 poziomy */
+#ecommerce-prace .work-grid { grid-template-columns: 1fr 2fr; align-items: center; }
+#ecommerce-prace .work-grid img:nth-child(1) { aspect-ratio: 3 / 4; }
+#ecommerce-prace .work-grid img:nth-child(2) { aspect-ratio: 16 / 9; }
+
+/* Celujemy w sekcję Projekty 2D i ustawiamy siatkę na 2 kolumny */
+#projekty-2d .work-grid { 
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* To zmusi zdjęcia do stania obok siebie */
+    gap: 20px;
+}
+
+/* Pierwsze dwa zdjęcia - PIONOWE */
+#projekty-2d .work-grid img:nth-child(-n+2) { 
+    aspect-ratio: 3 / 4 !important; 
+}
+
+/* Trzecie zdjęcie - POZIOME ROZCIĄGNIĘTE */
+#projekty-2d .work-grid img:nth-child(3) {
+    grid-column: 1 / span 2 !important; 
+    aspect-ratio: 16 / 9 !important;
+}
+
+
+/* 6. Proces & Strategia: 2 pionowe obok siebie */
+#konsultacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
+#konsultacje-prace .work-grid img { aspect-ratio: 3 / 4; }
+
+/* --- KONTAKT --- */
+.contact-section {
+    padding: 80px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 60px;
+}
+
+/* --- STOPKA (NOWA WĄSKA WERSJA) --- */
+footer {
+    padding: 15px 0;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Cień na górze */
+    margin-top: 80px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+}
+
+.footer-year {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.footer-main-brand {
+    font-weight: 700;
+    font-size: 1.1rem; 
+    color: var(--accent-color); /* Złoty pogrubiony */
+    text-transform: uppercase;
+    display: block;
+    line-height: 1;
+}
+
+.footer-sub-brand {
+    font-weight: 700;
+    font-size: 0.75rem; 
+    letter-spacing: 4px; 
+    color: var(--accent-color); /* Złoty pogrubiony wycentrowany */
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 900px) {
+    .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .work-grid img { aspect-ratio: 1 / 1 !important; width: 100% !important; }
+
+    /* Centrowanie obrazków, które w pełnym widoku zajmują 2 kolumny */
+    #modele3d-prace .work-grid img:nth-child(3),
+    #Projekty-2D .work-grid img:nth-child(3) { 
+        grid-column: auto; 
+        width: 100%; 
+    }
+
+    .about-container, .contact-section { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media (max-width: 600px) {
+    .work-grid { grid-template-columns: 1fr !important; }
+}
