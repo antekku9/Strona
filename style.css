@@ -399,11 +399,11 @@ justify-self: center;
 
 /* 5. Projekty 2D: 2 pionowe, pod nimi 1 poziomy */
 
-#animacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
+#wizualizacje-2d .work-grid img { aspect-ratio: 3 / 4; } repeat(2, 1fr); }
 
-#animacje-prace .work-grid img:nth-child(-n+2) { aspect-ratio: 3 / 4; }
+#wizualizacje-2d .work-grid img:nth-child(-n+2) { aspect-ratio: 16 / 9; }
 
-#animacje-prace .work-grid img:nth-child(3) {
+#wizualizacje-2d .work-grid img:nth-child(3) {
 
 grid-column: 1 / span 2;
 
