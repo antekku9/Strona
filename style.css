@@ -59,23 +59,47 @@ h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; font-weight: 70
 .work-zone { padding: 50px 0; border-bottom: 1px solid #eee; }
 .work-zone h3 { font-size: 2rem; text-align: center; margin-bottom: 40px; }
 
-/* Domyślna siatka - 3 kolumny */
-.work-grid {
+/* --- SERVICE & PORTFOLIO GRID (KARTY KATEGORII) --- */
+.services-grid, .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* Wymuszamy 3 kolumny dla kart kategorii na komputerach */
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 25px;
+    margin: 40px auto;
 }
 
-.work-grid img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 40px 25px;
+    border: 1px solid #eee;
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: var(--transition);
+    /* Wymuszamy, aby karta była kwadratowa */
+    aspect-ratio: 1 / 1 !important; 
 }
+
+.portfolio-item h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.portfolio-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
 
 /* --- KONKRETNE UKŁADY DLA TWOICH SEKCJI --- */
 
