@@ -1,7 +1,7 @@
 /* --- ZMIENNE KOLORÓW I FONTU --- */
 :root {
     --primary-color: #222;
-    --accent-color: #c5a059; /* Złoty akcent */
+    --accent-color: #c5a059;
     --bg-light: #fdfdfd;
     --text-muted: #666;
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -16,16 +16,21 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
     background: var(--bg-light);
     color: var(--primary-color);
     line-height: 1.6;
 }
 
+a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
 /* --- NAVBAR --- */
 nav {
     width: 100%;
-    padding: 20px 5%; 
+    padding: 20px 5%;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -39,59 +44,60 @@ nav {
 nav a {
     text-decoration: none;
     color: var(--primary-color);
-    font-size: 0.85rem; 
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.2s;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
     color: var(--accent-color);
 }
 
 /* --- HEADER / HERO --- */
 header.hero {
-    height: 75vh; 
+    min-height: 75svh;
+    height: 75vh;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end; 
+    align-items: flex-end;
     overflow: hidden;
-    background-color: #fff; 
-    padding-bottom: 50px; 
+    background-color: #fff;
+    padding-bottom: 50px;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: white; 
-    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9);
     padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
     font-size: 2.8rem;
-    font-weight: 500; 
+    font-weight: 500;
     margin-bottom: 5px;
-    line-height: 1;
+    line-height: 1.1;
 }
 
 .hero-content p {
     font-size: 1.1rem;
-    font-weight: 300; 
-    letter-spacing: 8px;
+    font-weight: 300;
+    letter-spacing: 6px;
     text-transform: uppercase;
     margin-top: 15px;
 }
 
 .carousel-track-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 1;
 }
 
@@ -110,8 +116,8 @@ header.hero {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; 
-    filter: brightness(0.7); 
+    object-fit: cover;
+    filter: brightness(0.7);
 }
 
 /* --- SEKCJE OGÓLNE --- */
@@ -123,7 +129,7 @@ section {
 }
 
 h2 {
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
     margin-bottom: 40px;
     text-align: center;
     font-weight: 700;
@@ -132,8 +138,8 @@ h2 {
 /* --- ABOUT --- */
 .about-container {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; 
-    gap: 60px; 
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
     align-items: center;
 }
 
@@ -141,18 +147,20 @@ h2 {
     width: 100%;
     max-width: 450px;
     border-radius: 5px;
-    box-shadow: 20px 20px 0px var(--accent-color); 
+    box-shadow: 20px 20px 0 var(--accent-color);
 }
 
 /* --- SERVICE & PORTFOLIO GRID --- */
-.services-grid, .portfolio-grid {
+.services-grid,
+.portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
     margin: 40px auto;
 }
 
-.service-card, .portfolio-item {
+.service-card,
+.portfolio-item {
     display: block;
     background: white;
     padding: 40px 25px;
@@ -163,12 +171,14 @@ h2 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.service-card:hover, .portfolio-item:hover {
+.service-card:hover,
+.portfolio-item:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* --- STREFY PRAC (BAZA) --- */
+/* --- STREFY PRAC --- */
 .work-zone {
     padding: 50px 0;
     margin-bottom: 50px;
@@ -190,7 +200,7 @@ h2 {
 
 .work-grid img {
     width: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     display: block;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
@@ -202,54 +212,35 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* --- PRECYZYJNE USTAWIENIA DLA KATEGORII --- */
-
-/* 1. Fotografia: 3 pionowe (góra), 3 kwadraty (dół) */
+/* --- UKŁADY SPECJALNE --- */
 #fotografia-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
-#fotografia-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
-#fotografia-prace .work-grid img:nth-child(n+4) { aspect-ratio: 1 / 1; }
+#fotografia-prace img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
+#fotografia-prace img:nth-child(n+4) { aspect-ratio: 1 / 1; }
 
-/* 2. Grafika 2D: 3 kwadraty (góra), 3 pionowe (dół) */
 #grafika2d-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
-#grafika2d-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
-#grafika2d-prace .work-grid img:nth-child(n+4) { aspect-ratio: 3 / 4; }
+#grafika2d-prace img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
+#grafika2d-prace img:nth-child(n+4) { aspect-ratio: 3 / 4; }
 
-/* 3. Modele 3D: 2 poziome, 1 poziomy wycentrowany */
 #modele3d-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
-#modele3d-prace .work-grid img { aspect-ratio: 16 / 9; }
-#modele3d-prace .work-grid img:nth-child(3) {
+#modele3d-prace img { aspect-ratio: 16 / 9; }
+#modele3d-prace img:nth-child(3) {
     grid-column: 1 / span 2;
     width: 50%;
     justify-self: center;
 }
 
-/* 4. E-commerce: 1 pionowy, 1 poziomy */
-#ecommerce-prace .work-grid { grid-template-columns: 1fr 2fr; align-items: center; }
-#ecommerce-prace .work-grid img:nth-child(1) { aspect-ratio: 3 / 4; }
-#ecommerce-prace .work-grid img:nth-child(2) { aspect-ratio: 16 / 9; }
-
-/* Celujemy w sekcję Projekty 2D i ustawiamy siatkę na 2 kolumny */
-#projekty-2d .work-grid { 
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* To zmusi zdjęcia do stania obok siebie */
-    gap: 20px;
+#ecommerce-prace .work-grid {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
 }
+#ecommerce-prace img:nth-child(1) { aspect-ratio: 3 / 4; }
+#ecommerce-prace img:nth-child(2) { aspect-ratio: 16 / 9; }
 
-/* Pierwsze dwa zdjęcia - PIONOWE */
-#projekty-2d .work-grid img:nth-child(-n+2) { 
-    aspect-ratio: 3 / 4 !important; 
+#konsultacje-prace .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
 }
-
-/* Trzecie zdjęcie - POZIOME ROZCIĄGNIĘTE */
-#projekty-2d .work-grid img:nth-child(3) {
-    grid-column: 1 / span 2 !important; 
-    aspect-ratio: 16 / 9 !important;
-}
-
-
-/* 6. Proces & Strategia: 2 pionowe obok siebie */
-#konsultacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
-#konsultacje-prace .work-grid img { aspect-ratio: 3 / 4; }
+#konsultacje-prace img { aspect-ratio: 3 / 4; }
 
 /* --- KONTAKT --- */
 .contact-section {
@@ -257,65 +248,67 @@ h2 {
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr; 
+    grid-template-columns: 1fr 1.5fr;
     gap: 60px;
 }
 
-/* --- STOPKA (NOWA WĄSKA WERSJA) --- */
+/* --- STOPKA --- */
 footer {
     padding: 15px 0;
     background: #fff;
     text-align: center;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Cień na górze */
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
     margin-top: 80px;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 100%;
+    align-items: center;
 }
 
 .footer-year {
     font-size: 0.7rem;
     color: var(--text-muted);
-    margin-bottom: 2px;
 }
 
 .footer-main-brand {
     font-weight: 700;
-    font-size: 1.1rem; 
-    color: var(--accent-color); /* Złoty pogrubiony */
+    font-size: 1.1rem;
+    color: var(--accent-color);
     text-transform: uppercase;
-    display: block;
     line-height: 1;
 }
 
 .footer-sub-brand {
     font-weight: 700;
-    font-size: 0.75rem; 
-    letter-spacing: 4px; 
-    color: var(--accent-color); /* Złoty pogrubiony wycentrowany */
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--accent-color);
     text-transform: uppercase;
-    display: block;
-    margin-top: 2px;
 }
 
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
-    .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .work-grid img { aspect-ratio: 1 / 1 !important; width: 100% !important; }
-
-    /* Centrowanie obrazków, które w pełnym widoku zajmują 2 kolumny */
-    #modele3d-prace .work-grid img:nth-child(3),
-    #Projekty-2D .work-grid img:nth-child(3) { 
-        grid-column: auto; 
-        width: 100%; 
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .about-container, .contact-section { 
-        grid-template-columns: 1fr; 
+    .about-container,
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+
+    #modele3d-prace img:nth-child(3) {
+        width: 100%;
+        grid-column: auto;
     }
 }
 
 @media (max-width: 600px) {
-    .work-grid { grid-template-columns: 1fr !important; }
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content p {
+        letter-spacing: 3px;
+        font-size: 0.9rem;
+    }
 }
