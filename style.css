@@ -20,13 +20,6 @@ body {
     background: var(--bg-light);
     color: var(--primary-color);
     line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Usprawnienie dostępności z wersji 1 */
-a:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 4px;
 }
 
 /* --- NAVBAR --- */
@@ -53,15 +46,13 @@ nav a {
     transition: 0.2s;
 }
 
-nav a:hover,
-nav a.active { /* Dodano klasę active z wersji 1 */
+nav a:hover {
     color: var(--accent-color);
 }
 
 /* --- HEADER / HERO --- */
 header.hero {
-    height: 75vh;
-    min-height: 75svh; /* Dynamic viewport dla mobile z wersji 1 */
+    height: 75vh; 
     position: relative;
     display: flex;
     justify-content: center;
@@ -78,28 +69,29 @@ header.hero {
     color: white; 
     text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
     padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 .hero-content h1 {
     font-size: 2.8rem;
     font-weight: 500; 
     margin-bottom: 5px;
-    line-height: 1.1;
+    line-height: 1;
 }
 
 .hero-content p {
     font-size: 1.1rem;
     font-weight: 300; 
-    letter-spacing: 6px; /* Zbalansowane z obu wersji */
+    letter-spacing: 8px;
     text-transform: uppercase;
     margin-top: 15px;
 }
 
 .carousel-track-container {
     position: absolute;
-    inset: 0; /* Skrót z wersji 1 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
@@ -118,7 +110,7 @@ header.hero {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Zmieniono z contain na cover dla lepszego efektu hero */
+    object-fit: contain; 
     filter: brightness(0.7); 
 }
 
@@ -174,10 +166,9 @@ h2 {
 .service-card:hover, .portfolio-item:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Mocniejszy cień przy hoverze */
 }
 
-/* --- STREFY PRAC (UKŁADY SPECJALNE) --- */
+/* --- STREFY PRAC (BAZA) --- */
 .work-zone {
     padding: 50px 0;
     margin-bottom: 50px;
@@ -211,17 +202,19 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* 1. Fotografia */
+/* --- PRECYZYJNE USTAWIENIA DLA KATEGORII --- */
+
+/* 1. Fotografia: 3 pionowe (góra), 3 kwadraty (dół) */
 #fotografia-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
 #fotografia-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
 #fotografia-prace .work-grid img:nth-child(n+4) { aspect-ratio: 1 / 1; }
 
-/* 2. Grafika 2D */
+/* 2. Grafika 2D: 3 kwadraty (góra), 3 pionowe (dół) */
 #grafika2d-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
 #grafika2d-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
 #grafika2d-prace .work-grid img:nth-child(n+4) { aspect-ratio: 3 / 4; }
 
-/* 3. Modele 3D */
+/* 3. Modele 3D: 2 poziome, 1 poziomy wycentrowany */
 #modele3d-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
 #modele3d-prace .work-grid img { aspect-ratio: 16 / 9; }
 #modele3d-prace .work-grid img:nth-child(3) {
@@ -230,22 +223,31 @@ h2 {
     justify-self: center;
 }
 
-/* 4. E-commerce */
+/* 4. E-commerce: 1 pionowy, 1 poziomy */
 #ecommerce-prace .work-grid { grid-template-columns: 1fr 2fr; align-items: center; }
 #ecommerce-prace .work-grid img:nth-child(1) { aspect-ratio: 3 / 4; }
 #ecommerce-prace .work-grid img:nth-child(2) { aspect-ratio: 16 / 9; }
 
-/* 5. Specjalny układ Projekty 2D */
+/* Celujemy w sekcję Projekty 2D i ustawiamy siatkę na 2 kolumny */
 #projekty-2d .work-grid { 
-    grid-template-columns: 1fr 1fr;
-}
-#projekty-2d .work-grid img:nth-child(-n+2) { aspect-ratio: 3 / 4; }
-#projekty-2d .work-grid img:nth-child(3) {
-    grid-column: 1 / span 2; 
-    aspect-ratio: 16 / 9;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* To zmusi zdjęcia do stania obok siebie */
+    gap: 20px;
 }
 
-/* 6. Proces & Strategia */
+/* Pierwsze dwa zdjęcia - PIONOWE */
+#projekty-2d .work-grid img:nth-child(-n+2) { 
+    aspect-ratio: 3 / 4 !important; 
+}
+
+/* Trzecie zdjęcie - POZIOME ROZCIĄGNIĘTE */
+#projekty-2d .work-grid img:nth-child(3) {
+    grid-column: 1 / span 2 !important; 
+    aspect-ratio: 16 / 9 !important;
+}
+
+
+/* 6. Proces & Strategia: 2 pionowe obok siebie */
 #konsultacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
 #konsultacje-prace .work-grid img { aspect-ratio: 3 / 4; }
 
@@ -259,28 +261,31 @@ h2 {
     gap: 60px;
 }
 
-/* --- STOPKA --- */
+/* --- STOPKA (NOWA WĄSKA WERSJA) --- */
 footer {
     padding: 15px 0;
     background: #fff;
     text-align: center;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); 
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Cień na górze */
     margin-top: 80px;
     display: flex; 
     flex-direction: column;
     align-items: center; 
+    width: 100%;
 }
 
 .footer-year {
     font-size: 0.7rem;
     color: var(--text-muted);
+    margin-bottom: 2px;
 }
 
 .footer-main-brand {
     font-weight: 700;
     font-size: 1.1rem; 
-    color: var(--accent-color);
+    color: var(--accent-color); /* Złoty pogrubiony */
     text-transform: uppercase;
+    display: block;
     line-height: 1;
 }
 
@@ -288,44 +293,29 @@ footer {
     font-weight: 700;
     font-size: 0.75rem; 
     letter-spacing: 4px; 
-    color: var(--accent-color);
+    color: var(--accent-color); /* Złoty pogrubiony wycentrowany */
     text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
 }
 
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
-    /* Usprawnienie gridów na tablety z zachowaniem logiki z wersji 2 */
-    .work-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-    }
-    
-    .work-grid img { 
-        aspect-ratio: 1 / 1 !important; 
-        width: 100% !important; 
-        grid-column: auto !important; 
+    .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .work-grid img { aspect-ratio: 1 / 1 !important; width: 100% !important; }
+
+    /* Centrowanie obrazków, które w pełnym widoku zajmują 2 kolumny */
+    #modele3d-prace .work-grid img:nth-child(3),
+    #Projekty-2D .work-grid img:nth-child(3) { 
+        grid-column: auto; 
+        width: 100%; 
     }
 
     .about-container, .contact-section { 
         grid-template-columns: 1fr; 
-        gap: 40px;
-    }
-
-    #modele3d-prace .work-grid img:nth-child(3) {
-        width: 100%;
     }
 }
 
 @media (max-width: 600px) {
-    .work-grid { 
-        grid-template-columns: 1fr !important; 
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        letter-spacing: 3px;
-        font-size: 0.9rem;
-    }
+    .work-grid { grid-template-columns: 1fr !important; }
 }
