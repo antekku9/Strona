@@ -1,7 +1,7 @@
 /* --- ZMIENNE KOLORÓW I FONTU --- */
 :root {
     --primary-color: #222;
-    --accent-color: #c5a059;
+    --accent-color: #c5a059; /* Złoty akcent */
     --bg-light: #fdfdfd;
     --text-muted: #666;
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -16,12 +16,14 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; 
     background: var(--bg-light);
     color: var(--primary-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Usprawnienie dostępności z wersji 1 */
 a:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 4px;
@@ -30,7 +32,7 @@ a:focus-visible {
 /* --- NAVBAR --- */
 nav {
     width: 100%;
-    padding: 20px 5%;
+    padding: 20px 5%; 
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -44,7 +46,7 @@ nav {
 nav a {
     text-decoration: none;
     color: var(--primary-color);
-    font-size: 0.85rem;
+    font-size: 0.85rem; 
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -52,29 +54,29 @@ nav a {
 }
 
 nav a:hover,
-nav a.active {
+nav a.active { /* Dodano klasę active z wersji 1 */
     color: var(--accent-color);
 }
 
 /* --- HEADER / HERO --- */
 header.hero {
-    min-height: 75svh;
     height: 75vh;
+    min-height: 75svh; /* Dynamic viewport dla mobile z wersji 1 */
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-end; 
     overflow: hidden;
-    background-color: #fff;
-    padding-bottom: 50px;
+    background-color: #fff; 
+    padding-bottom: 50px; 
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9);
+    color: white; 
+    text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 0 3px rgba(0,0,0,0.9); 
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
@@ -82,22 +84,22 @@ header.hero {
 
 .hero-content h1 {
     font-size: 2.8rem;
-    font-weight: 500;
+    font-weight: 500; 
     margin-bottom: 5px;
     line-height: 1.1;
 }
 
 .hero-content p {
     font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 6px;
+    font-weight: 300; 
+    letter-spacing: 6px; /* Zbalansowane z obu wersji */
     text-transform: uppercase;
     margin-top: 15px;
 }
 
 .carousel-track-container {
     position: absolute;
-    inset: 0;
+    inset: 0; /* Skrót z wersji 1 */
     z-index: 1;
 }
 
@@ -116,8 +118,8 @@ header.hero {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: brightness(0.7);
+    object-fit: cover; /* Zmieniono z contain na cover dla lepszego efektu hero */
+    filter: brightness(0.7); 
 }
 
 /* --- SEKCJE OGÓLNE --- */
@@ -129,7 +131,7 @@ section {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; 
     margin-bottom: 40px;
     text-align: center;
     font-weight: 700;
@@ -138,8 +140,8 @@ h2 {
 /* --- ABOUT --- */
 .about-container {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 60px; 
     align-items: center;
 }
 
@@ -147,20 +149,18 @@ h2 {
     width: 100%;
     max-width: 450px;
     border-radius: 5px;
-    box-shadow: 20px 20px 0 var(--accent-color);
+    box-shadow: 20px 20px 0px var(--accent-color); 
 }
 
 /* --- SERVICE & PORTFOLIO GRID --- */
-.services-grid,
-.portfolio-grid {
+.services-grid, .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     gap: 25px;
     margin: 40px auto;
 }
 
-.service-card,
-.portfolio-item {
+.service-card, .portfolio-item {
     display: block;
     background: white;
     padding: 40px 25px;
@@ -171,14 +171,13 @@ h2 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.service-card:hover,
-.portfolio-item:hover {
+.service-card:hover, .portfolio-item:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Mocniejszy cień przy hoverze */
 }
 
-/* --- STREFY PRAC --- */
+/* --- STREFY PRAC (UKŁADY SPECJALNE) --- */
 .work-zone {
     padding: 50px 0;
     margin-bottom: 50px;
@@ -200,7 +199,7 @@ h2 {
 
 .work-grid img {
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; 
     display: block;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
@@ -212,35 +211,43 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* --- UKŁADY SPECJALNE --- */
+/* 1. Fotografia */
 #fotografia-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
-#fotografia-prace img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
-#fotografia-prace img:nth-child(n+4) { aspect-ratio: 1 / 1; }
+#fotografia-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 3 / 4; }
+#fotografia-prace .work-grid img:nth-child(n+4) { aspect-ratio: 1 / 1; }
 
+/* 2. Grafika 2D */
 #grafika2d-prace .work-grid { grid-template-columns: repeat(3, 1fr); }
-#grafika2d-prace img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
-#grafika2d-prace img:nth-child(n+4) { aspect-ratio: 3 / 4; }
+#grafika2d-prace .work-grid img:nth-child(-n+3) { aspect-ratio: 1 / 1; }
+#grafika2d-prace .work-grid img:nth-child(n+4) { aspect-ratio: 3 / 4; }
 
+/* 3. Modele 3D */
 #modele3d-prace .work-grid { grid-template-columns: repeat(2, 1fr); }
-#modele3d-prace img { aspect-ratio: 16 / 9; }
-#modele3d-prace img:nth-child(3) {
+#modele3d-prace .work-grid img { aspect-ratio: 16 / 9; }
+#modele3d-prace .work-grid img:nth-child(3) {
     grid-column: 1 / span 2;
     width: 50%;
     justify-self: center;
 }
 
-#ecommerce-prace .work-grid {
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-}
-#ecommerce-prace img:nth-child(1) { aspect-ratio: 3 / 4; }
-#ecommerce-prace img:nth-child(2) { aspect-ratio: 16 / 9; }
+/* 4. E-commerce */
+#ecommerce-prace .work-grid { grid-template-columns: 1fr 2fr; align-items: center; }
+#ecommerce-prace .work-grid img:nth-child(1) { aspect-ratio: 3 / 4; }
+#ecommerce-prace .work-grid img:nth-child(2) { aspect-ratio: 16 / 9; }
 
-#konsultacje-prace .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 800px;
+/* 5. Specjalny układ Projekty 2D */
+#projekty-2d .work-grid { 
+    grid-template-columns: 1fr 1fr;
 }
-#konsultacje-prace img { aspect-ratio: 3 / 4; }
+#projekty-2d .work-grid img:nth-child(-n+2) { aspect-ratio: 3 / 4; }
+#projekty-2d .work-grid img:nth-child(3) {
+    grid-column: 1 / span 2; 
+    aspect-ratio: 16 / 9;
+}
+
+/* 6. Proces & Strategia */
+#konsultacje-prace .work-grid { grid-template-columns: repeat(2, 1fr); max-width: 800px; }
+#konsultacje-prace .work-grid img { aspect-ratio: 3 / 4; }
 
 /* --- KONTAKT --- */
 .contact-section {
@@ -248,7 +255,7 @@ h2 {
     max-width: 900px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.5fr; 
     gap: 60px;
 }
 
@@ -257,11 +264,11 @@ footer {
     padding: 15px 0;
     background: #fff;
     text-align: center;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); 
     margin-top: 80px;
-    display: flex;
+    display: flex; 
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
 }
 
 .footer-year {
@@ -271,7 +278,7 @@ footer {
 
 .footer-main-brand {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.1rem; 
     color: var(--accent-color);
     text-transform: uppercase;
     line-height: 1;
@@ -279,32 +286,42 @@ footer {
 
 .footer-sub-brand {
     font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 4px;
+    font-size: 0.75rem; 
+    letter-spacing: 4px; 
     color: var(--accent-color);
     text-transform: uppercase;
 }
 
 /* --- RESPONSYWNOŚĆ --- */
 @media (max-width: 900px) {
-    .work-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Usprawnienie gridów na tablety z zachowaniem logiki z wersji 2 */
+    .work-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+    }
+    
+    .work-grid img { 
+        aspect-ratio: 1 / 1 !important; 
+        width: 100% !important; 
+        grid-column: auto !important; 
     }
 
-    .about-container,
-    .contact-section {
-        grid-template-columns: 1fr;
+    .about-container, .contact-section { 
+        grid-template-columns: 1fr; 
+        gap: 40px;
     }
 
-    #modele3d-prace img:nth-child(3) {
+    #modele3d-prace .work-grid img:nth-child(3) {
         width: 100%;
-        grid-column: auto;
     }
 }
 
 @media (max-width: 600px) {
-    .work-grid {
-        grid-template-columns: 1fr;
+    .work-grid { 
+        grid-template-columns: 1fr !important; 
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
     }
 
     .hero-content p {
