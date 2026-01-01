@@ -116,8 +116,9 @@ header.hero {
     width: 100%;
     height: 100%;
     object-fit: contain; 
-    background-color: #1a1a1a; 
-    filter: brightness(0.8); 
+    /* Zmień z #1a1a1a na #ffffff (biały) lub na var(--bg-light) */
+    background-color: #ffffff; 
+    filter: brightness(0.9); /* Delikatne przyciemnienie, żeby napisy były widoczne */
 }
 
 /* --- SEKCJE OGÓLNE --- */
