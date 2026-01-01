@@ -267,41 +267,40 @@ h2 {
     gap: 60px;
 }
 
-/* --- STOPKA (NOWA WĄSKA WERSJA) --- */
+/* --- STOPKA (Wspólna dla wszystkich stron) --- */
 footer {
-    padding: 15px 0;
-    background: #fff;
-    text-align: center;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Cień na górze */
+    padding: 40px;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #eee;
     margin-top: 80px;
     display: flex; 
     flex-direction: column;
     align-items: center; 
+    text-align: center;
+    background: #fff; /* Dodaj tło, jeśli wcześniej go nie było */
     width: 100%;
 }
 
 .footer-year {
-    font-size: 0.7rem;
+    display: block; 
+    margin-bottom: 5px;
     color: var(--text-muted);
-    margin-bottom: 2px;
 }
 
 .footer-main-brand {
     font-weight: 700;
-    font-size: 1.1rem; 
-    color: var(--accent-color); /* Złoty pogrubiony */
+    font-size: 0.9rem; 
+    color: var(--primary-color); 
     text-transform: uppercase;
-    display: block;
-    line-height: 1;
 }
 
 .footer-sub-brand {
-    font-weight: 700;
-    font-size: 0.75rem; 
-    letter-spacing: 4px; 
-    color: var(--accent-color); /* Złoty pogrubiony wycentrowany */
+    font-weight: 500;
+    font-size: 0.65rem; 
+    letter-spacing: 3px; 
+    color: var(--text-muted); 
     text-transform: uppercase;
-    display: block;
     margin-top: 2px;
 }
 
